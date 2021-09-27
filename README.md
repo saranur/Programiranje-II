@@ -7,7 +7,7 @@ Repozitorij za zadatke iz Programiranja II
 
 **Vježbe 2 - Klase i objekti:** Postavka  Rješenje
 
-**Vježba 3 - Konstrukturi i destruktori: **Postavka  Rješenje
+**Vježba 3 - Konstrukturi i destruktori: **Postavka  Rješenje 
 
 **Vježbe 4 - Preklapanje operatora:** Postavka  Rješenje
 
