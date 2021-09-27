@@ -4,8 +4,7 @@ Repozitorij za zadatke iz Programiranja II
 
 ## **Vježbe**
 
-
-**Vježbe 1 - Uvod u OOP:** Postavka  Rješenje
+**Vježbe 1 - Uvod u OOP:** [Postavka](https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/Vje%C5%BEba%201%20-%20Postavka.cpp)  Rješenje
 
 **Vježbe 2 - Klase i objekti:** Postavka  Rješenje
 
