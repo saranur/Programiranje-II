@@ -9,7 +9,7 @@ Repozitorij za zadatke iz Programiranja II
 
 **Vježbe 2 - Klase i objekti:** Postavka  Rješenje
 
-**Vježba 3 - Konstrukturi i destruktori:**Postavka  Rješenje 
+**Vježba 3 - Konstrukturi i destruktori:** Postavka  Rješenje 
 
 **Vježbe 4 - Preklapanje operatora:** Postavka  Rješenje
 
@@ -17,7 +17,7 @@ Repozitorij za zadatke iz Programiranja II
 
 **Vježba 5.1 - Napredne funkcije:** Postavka  Rješenje 
 
-**Probni ispit (Prva parcijala) 20.04.2021:**Postavka  Rješenje
+**Probni ispit (Prva parcijala) 20.04.2021:** Postavka  Rješenje
 
 **Probni prva parcijala (Kemal) -22.04.2021:** Postavka  Rješenje
 
