@@ -29,7 +29,7 @@ Repozitorij za zadatke iz Programiranja II
 
 **Vježba 9 Exceptions (Greške): ** Postavka  Rješenje
 
-**Vježba 10 STL: ** Postavka  Rješenje
+**Vježba 10 STL: ** Postavka  Rješenje 
 
 ## Ispitni zadaci
 
