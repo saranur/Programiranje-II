@@ -6,28 +6,12 @@ Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranj
 <div class="dropdown">
   <button class="dropbtn">Dropdown</button>
   <div class="dropdown-content">
-    <a href="#">Link 1</a>
+    <a href="https://github.com/saranur/Programiranje-II#vje%C5%BEbe">Vježbe</a>
     <a href="#">Link 2</a>
     <a href="#">Link 3</a>
   </div>
 </div>
-<style>
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>
-
-<div class="dropdown">
-  <span>Mouse over me</span>
-  <div class="dropdown-content">
-    <p>Hello World!</p>
-  </div>
-</div>
 
 ## **Vježbe**
 
