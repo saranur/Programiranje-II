@@ -3,25 +3,6 @@
 Repozitorij za zadatke iz Programiranja II
 
 Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranje-II/blob/main/Uvod%20u%20Programiranje%20II.md)
-<style type="text/css">
-  .dropdown{
-position: relative; font-size: 25px;
-  display:inline-block;
-  color: blue;
-  }
-.dropdown-content{
-  display: none; background-color: purple;
-  font-size: 24px; 
-  color:black;
-  width:90%; box-shadow: 2px 8px 16px 3px rgba(0,0,0,0.2);
-  padding: 12px 15px;
-  z-index: 1
-  }
-  dropdown.hover .dropdown-contentP{
-  display: block;
-  cursor:pointer;
-  }
-
 
 <div class="dropdown">
   <span>Vježbe</span>
