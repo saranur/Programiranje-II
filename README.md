@@ -4,9 +4,19 @@ Repozitorij za zadatke iz Programiranja II
 
 Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranje-II/blob/main/Uvod%20u%20Programiranje%20II.md)
 
-<div class="dropdown">
-  <span>Vježbe</span>
-  <div class="dropdown-content">
+<form>  
+<label> Select Cars </label>  
+<select>  
+<option value = "BMW"> BMW   
+</option>  
+<option value = "Mercedes"> Mercedes   
+</option>  
+<option value = "Audi"> Audi  
+</option>  
+<option value = "Skoda"> Skoda  
+</option>  
+</select>  
+</form>  
    
 **Vježbe 1 - Uvod u OOP:** [Postavka](https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/Vje%C5%BEba%201%20-%20Postavka.cpp)  Rješenje
 
