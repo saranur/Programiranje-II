@@ -3,18 +3,30 @@
 Repozitorij za zadatke iz Programiranja II
 
 Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranje-II/blob/main/Uvod%20u%20Programiranje%20II.md)
+<style type="text/css">
+  .dropdown{
+position: relative; font-size: 25px;
+  display:inline-block;
+  color: blue;
+  }
+.dropdown-content{
+  display: none; background-color: purple;
+  font-size: 24px; 
+  color:black;
+  width:90%; box-shadow: 2px 8px 16px 3px rgba(0,0,0,0.2);
+  padding: 12px 15px;
+  z-index: 1
+  }
+  dropdown.hover .dropdown-contentP{
+  display: block;
+  cursor:pointer;
+  }
+
+
 <div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
+  <span>Vježbe</span>
   <div class="dropdown-content">
-    <a href="https://github.com/saranur/Programiranje-II#vje%C5%BEbe">Vježbe</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-</div>
-
-
-## **Vježbe**
-
+   
 **Vježbe 1 - Uvod u OOP:** [Postavka](https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/Vje%C5%BEba%201%20-%20Postavka.cpp)  Rješenje
 
 **Vježbe 2 - Klase i objekti:** Postavka  Rješenje
@@ -42,6 +54,12 @@ Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranj
 **Vježba 9 Exceptions (Greške):** Postavka  Rješenje
 
 **Vježba 10 STL:** Postavka  Rješenje 
+  </div>
+</div>
+
+
+## **Vježbe**
+
 
 ## Ispitni zadaci
 
