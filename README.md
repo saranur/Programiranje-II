@@ -30,8 +30,17 @@ Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranj
 <summary>Ispitni zadaci</summary>
 <br>
 <ul>
-<li> <p>  <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-  <li> <p>  <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 16.07.2021 G2 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 16.07.2021 G1 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 25.06.2021 G2 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 25.06.2021 G1 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 31.08.2020 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 15.07.2020 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 24.06.2020 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 28.08.2019 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 04.07.2019 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 20.06.2019 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 24.01.2019 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
 </ul>
 </details>
 
