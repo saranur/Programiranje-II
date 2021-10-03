@@ -30,17 +30,17 @@ Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranj
 <summary>Ispitni zadaci</summary>
 <br>
 <ul>
-   <li> <p> Ispitni 16.07.2021 G2 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 16.07.2021 G1 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 25.06.2021 G2 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 25.06.2021 G1 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 31.08.2020 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 15.07.2020 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 24.06.2020 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 28.08.2019 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 04.07.2019 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 20.06.2019 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
-   <li> <p> Ispitni 24.01.2019 <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 16.07.2021 G2 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2016.07.2021%20G2%20postavka.pdf"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 16.07.2021 G1 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2016.07.2021%20%20G1%20postavka.pdf"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 25.06.2021 G2 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2025.06.2021%20G2%20postavka.pdf"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 25.06.2021 G1 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2025.06.2021%20G1%20postavka.pdf"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 31.08.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2031.08.2020.%20postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 15.07.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2015.07.2020.%20postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 24.06.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2024.06.2020.%20postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 28.08.2019 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2028.08.2019.%20postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 04.07.2019 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2004.07.2019.%20postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 20.06.2019 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2020.06.2019.%20postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
+   <li> <p> Ispitni 24.01.2019 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2024.1.2019%20postavka.pdf"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
 </ul>
 </details>
 
