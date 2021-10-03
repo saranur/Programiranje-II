@@ -8,7 +8,7 @@ Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranj
 <summary>Vježbe</summary>
 <br>
 <ul>
-<li> <p> Vježbe 1 - Uvod u OOP: <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/Vje%C5%BEba%201%20-%20Postavka.cpp"> Postavka </a> <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Rje%C5%A1enja/Vje%C5%BEbe%201%20-%20Rje%C5%A1enje.cpp"> Rješenje</a> </p> </li>
+<li> <p> Vježbe 1 - Uvod u OOP: <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/V1_Postavka.docx"> Postavka </a> <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Rje%C5%A1enja/Vje%C5%BEbe%201%20-%20Rje%C5%A1enje.cpp"> Rješenje</a> </p> </li>
 <li> <p> Vježbe 2 - Klase i objekti: <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/Vje%C5%BEba%202%20-%20Postavka.cpp"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
 <li> <p> Vježba 3 - Konstrukturi i destruktori: <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/Vje%C5%BEba%203%20-%20Postavka.cpp"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
 <li> <p> Vježbe 4 - Preklapanje operatora: <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/Vje%C5%BEba%204%20-%20Postavka.cpp"> Postavka </a>  <a href=""> Rješenje </a> </p> </li> 
