@@ -20,7 +20,7 @@ Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranj
 <li> <p> Vježbe 7- Polimorfizam: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/V7_Postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li> 
 <li> <p> Koncept višenasljednosti u klasama: <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p> </li> 
 <li> <p> Vježbe 8 Interfejs i višenasljednost: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/V8_Postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li> 
-<li> <p> Vježba 9 Exceptions (Greške): <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/V9_Rjesenje.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li> 
+<li> <p> Vježba 9 Exceptions (Greške): <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/V9_Postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li> 
 <li> <p> Vježba 10 STL: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/V10_Postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p> </li> 
   
 </ul>
