@@ -2,8 +2,10 @@
 
 Repozitorij za zadatke iz Programiranja II
 
-Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranje-II/blob/main/Uvod%20u%20Programiranje%20II.md)
-
+Get Familiar ~ [Tips and Tricks](https://github.com/saranur/Programiranje-II/blob/main/Uvod%20u%20Programiranje%20II.md)
+</br>
+[Snimljena predavanja (2020/2021)](https://www.youtube.com/watch?v=R_atSYLO4xI&list=PLJCjqoTZy0H9MTHMyfmoLOqs828E7c0OZ)
+<hr>
 <details>
 <summary>Vježbe</summary>
 <br>
@@ -25,7 +27,7 @@ Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranj
   
 </ul>
 </details>
-
+<hr>
 <details>
 <summary>Ispitni zadaci</summary>
 <br>
@@ -43,4 +45,5 @@ Get Familiar ~ [Uvod u Programiranje II](https://github.com/saranur/Programiranj
    <li> <p> Ispitni 24.01.2019 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2024.1.2019%20postavka.pdf"> Postavka </a>  <a href=""> Rješenje </a> </p> </li>
 </ul>
 </details>
+<hr>
 
