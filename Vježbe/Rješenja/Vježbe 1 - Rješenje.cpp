@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
+//Zadatak donje funckije jeste da se alocira pokazivac na novi niz karaktera velicine tekst:
 char* AlocirajIKopiraj(const char* tekst)
 {
     if (tekst == nullptr)
         return nullptr;
-    int vel = strlen(tekst) + 1;
+    int vel = strlen(tekst) + 1; //+1 se stavi radi nullterminirajuceg znaka; (/0)
     char* novi = new char[vel];
     strcpy_s(novi, vel, tekst);
     return novi;
@@ -15,8 +16,9 @@ struct Datum
     int* _dan = nullptr;
     int* _mjesec = nullptr;
     int* _godina = nullptr;
-    
-    void Unos(int d, int m, int g)
+    //Z1
+    //Zadatak ove funkcije jeste da  unesene parametre dodijeli propertijima dan mjesec i godina:
+    void Unos(int d, int m, int g) 
     {
         _dan = new int;
         _mjesec = new int;
@@ -25,40 +27,47 @@ struct Datum
         *_mjesec = m;
         *_godina = g;
     }
+    //Z1.2
+	//Zadatak ove funkcije jeste da omoguci unos propertia dan mjesec i godina ali ovaj put se to radi preko objekta tipa datum koji je poslan po referenci:
     void Unos(Datum& datum)
     {
         _dan = new int;
         _mjesec = new int;
         _godina = new int;
-        *_dan = *datum._dan;
+        *_dan = *datum._dan; //Zvjezdica na pocetku jer je _dan pointer koji se mora dereferencirati!
         *_mjesec = *datum._mjesec;
         *_godina = *datum._godina;
     }
+    
+	//Z1.3
+	//Zadatak sljedece funckije jeste da omoguci unos propertia dan mjesec i godina ali ovaj put se radi preko pointera tipa datum:
     void Unos(Datum* datum)
     {
         _dan = new int;
         _mjesec = new int;
         _godina = new int;
-        *_dan = *datum->_dan;
+        *_dan = *datum->_dan; //Datum se dereferencira sa strelicom a pointer _dan sa zvjezdicom na pocetku;
         *_mjesec = *datum->_mjesec;
         *_godina = *datum->_godina;
     }
-    int GetDan() { return *_dan; }
-    int GetMjesec() { return *_mjesec; }
-    int GetGodina() { return *_godina; }
+    int GetDan() { return *_dan; } //Zadatak ove  funkcije jeste da vrati dan 
+    int GetMjesec() { return *_mjesec; } //Zadatak ove  funkcije jeste da vrati mjesec
+    int GetGodina() { return *_godina; } //Zadatak ove  funkcije jeste da vrati godinu
+    	//Zadatak ove funckije jeste da proslijedjeni parametar postavi za dan:
     void SetDan(int dan)
     {
-        if (_dan == nullptr)
-            _dan = nullptr;
-
+        if (_dan == nullptr) //Moramo pitati da li je pointer _dan u upotrebi tj. da li pokazuje i na sta, ako ne pokazuje onda napraviti novi int i pokazati na njega
+			_dan = new int;
         *_dan = dan;
     }
+    	//Zadatak ove funckije jeste da proslijedjeni parametar postavi za mjesec
     void SetMjesec(int mjesec)
     {
-        if (_mjesec == nullptr)
+        if (_mjesec == nullptr) //Moramo provjeriti da li je pointer " prazan ", u suptronom pokusavali bi da setujemo na nultoj adresi sto ne mozemo raditi
             _mjesec = new int;
         *_mjesec=mjesec;
     }
+     	//Zadatak ove funckije jeste da proslijedjeni parametar postavi za godinu
     void SetGodina(int godina)
     {
         if (_godina == nullptr)
@@ -69,18 +78,20 @@ struct Datum
     
     void Dealokacija()
     {
-        delete _dan, _mjesec, _godina;
-    	_dan =_mjesec = _godina=nullptr;
+        delete _dan, _mjesec, _godina; //Sve pointere izbrise;
+    	_dan =_mjesec = _godina=nullptr; //Sve pointere nullpointa;
     }
 };
-
+//Zadatak ove funkcije jeste da provjeri da li su dva datuma ista (0 vrati ako nisu a bilo sta drugo vraceno znaci da jesu):
 bool JeLiIsti(Datum& d1, Datum& d2)
 {
+    	//Oba datuma su primljenja po referenci kako bi se poslali sa svojim adresama!!!
     return *d1._dan == *d2._dan
         && *d1._mjesec == *d2._mjesec
         && *d1._godina == *d2._godina;
+    	//Mogli smo korisiti i if i vratiti true/false, ali na ovaj nacin je krace
 }
-
+//Zadatak ove funkcije jeste da vrati referencu na objekat (datum) koji je najstariji:
 Datum& GetStarijiDatum(Datum& d1, Datum& d2)
 {
     if (*d1._godina < *d2._godina)
@@ -110,18 +121,19 @@ Datum* GetNajstarijiDatum(Datum datum[], int size)
     for (int i=0; i<size; i++)
     {
         najstariji = &GetStarijiDatum(*najstariji, datum[i]);
-        return najstariji;
     }
+        return najstariji;
+    
 }
 
 Datum* GetNajnovijiDatum(Datum datum[], int size) //
 {
-    Datum* najnoviji = datum;
-    for(int i=0; i<size; i++)
+    Datum* najnoviji = datum; //Inicijaliziramo  pokazivac najnoviji da pokazuje na prvi element niza datum;
+    for(int i=0; i<size; i++) 
     {
-        najnoviji = &GetNovijiDatum(*najnoviji, datum[i]);
-        return najnoviji;
+        najnoviji = &GetNovijiDatum(*najnoviji, datum[i]);  //Size broj puta se uporedi datum na pokazivacu najnoviji i  i-ti element niza datum, te vidi koji je noviji i spremi se adresa tog objekta na pointer najnoviji;
     }
+        return najnoviji;
 }
 
 struct Glumac {
@@ -130,13 +142,13 @@ struct Glumac {
     char* _prezime = nullptr;
     Datum* _datumRodjenja = nullptr;
     char* _mjestoRodjenja = nullptr;
-    char _drzava[100];
+    char _drzava[100]="";
     bool _spol; //1:Muski, 0:Zenski
 
     void Unos(const char* jmbg, const char* ime, const char* prezime, Datum& datumRodjenja,
         const char* mjestoRodjenja, const char* drzava, bool spol)
     {
-        strcpy_s(this->_jmbg, 14, jmbg);
+        strcpy_s(this->_jmbg, 14, jmbg); //koristimo strcpy_s zato sto je _jmbg staticki niz karaktera
         this->_ime = AlocirajIKopiraj(ime);
         this->_prezime = AlocirajIKopiraj(prezime);
         this->_datumRodjenja = new Datum;
@@ -147,6 +159,8 @@ struct Glumac {
         //this -ispise adresu objekta koji je pozvao funkciju
         //(*this) - sami objekat, refleksija 
     }
+    
+	//Zadatak ove funkcije jeste da omoguci unos obiljezja ali ovaj put preko reference na objekat tipa Glumac:
     void Unos(Glumac& glumac)
     {
         strcpy_s(this->_jmbg, 14, glumac._jmbg);
@@ -174,7 +188,7 @@ struct Glumac {
 
     void SetPrezime(const char* prezime)
     {
-        delete[] _prezime;
+        delete[] _prezime; 
         _prezime = AlocirajIKopiraj(prezime);
     }
 
@@ -185,6 +199,8 @@ struct Glumac {
         _datumRodjenja->SetDan(*datumRodjenja._dan);
         _datumRodjenja->SetMjesec(*datumRodjenja._mjesec);
         _datumRodjenja->SetGodina(*datumRodjenja._godina);
+        //Ili mozemo koristiti
+        /*_datumRodjenja->Unos(datumRodjenja); jer smo ga vec napravili u strukturi Datum*/
     }
 
     void SetMjestoRodjenja(const char* mjestoRodjenja)
@@ -216,7 +232,7 @@ struct Glumac {
     {
         delete[] _ime, _prezime,  _mjestoRodjenja;
         _ime = _prezime  = _mjestoRodjenja = nullptr;
-        _datumRodjenja->Dealokacija();
+        _datumRodjenja->Dealokacija(); //Posto je ovaj ptr tipa Datum strukture, prvo se njegovi properties brisu pa onda sam on!;
         delete _datumRodjenja;
         _datumRodjenja = nullptr;
     }
@@ -226,7 +242,7 @@ struct Film {
     char _filmID[50] = ""; //prema ISAN standardu
     //Defaultnu vrijednost za atribut
     char* _naziv = nullptr;
-    char _zanr[40];
+    char _zanr[40] ;
     int _godinaIzlaska;
     int _trenutnoGlumaca = 0;
     Glumac _glumackaPostava[20];
@@ -264,24 +280,25 @@ struct Film {
     {
         if (_trenutnoGlumaca == 20)
             return false;
-        _glumackaPostava[_trenutnoGlumaca].Unos(g);
+        _glumackaPostava[_trenutnoGlumaca].Unos(g); //Za trenutnog glumca u nizu od 20 glumaca unesi obiljezja iz glumca "g";
         _trenutnoGlumaca++;
         return true;
-    }
+    } 
 
     bool DodajOcjenu(int ocjena)
     {
-        int* temp = _ocjene;
-        _ocjene = new int[_trenutnoOcjena + 1];
+        int* temp = _ocjene; //Napravimo pomocni pokazivac na niz ocjena;
+        _ocjene = new int[_trenutnoOcjena + 1]; //Stari niz ocjena prosirimo za jednu, odatle +1; Brojac se ovdje ne POVECAVA!
         for (int i = 0; i < _trenutnoOcjena; i++)
-            _ocjene[i] = temp[i];
-        delete[] temp;
-        temp = nullptr;
-        _ocjene[_trenutnoOcjena];
-        _trenutnoOcjena++;
+            _ocjene[i] = temp[i]; //Za svako i prekopiramo ocjene ali posto se niz prosirio za jednu, jedna (zadnja) ocjena je ne popunjena;
+        delete[] temp; //Obrisemo dinamicki niz;
+        temp = nullptr; //Nullpointamo pointer temp;
+        _ocjene[_trenutnoOcjena]; //Zadnjoj ocjeni dodijelimo  ocjenu iz parametra;
+        _trenutnoOcjena++; //Povecamo brojac;
         return true;
     }
-    
+    //Z3.5
+	//Zadatak ove funkcije jeste da ispise obiljezja:
     void Ispis()
     {
         cout << "Naziv filma: " << _naziv << endl;
@@ -291,7 +308,7 @@ struct Film {
         cout << "====================================================" << endl;
         for (int i=0; i<_trenutnoGlumaca; i++)
         {
-            _glumackaPostava[i].Ispis();
+            _glumackaPostava[i].Ispis(); //Izvrsi ispis svakog glumca i njegovih obiljezja iz niza;
         }
         cout << "====================================================" << endl;
         cout << "Prosjecna ocjena: " << GetProsjecnaOcjena() << endl;
