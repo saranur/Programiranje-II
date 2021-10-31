@@ -10,7 +10,7 @@ Kako budete implementirali odredjene funkcionalnosti, tada lagano pocnite sa 'ot
 // dflt. = default
 // user-def. = user-defined (korisnicki-definirano)
 // ctor = constructor (konstruktor)
-// dtor = destructor (destruktor
+// dtor = destructor (destruktor)
 // dflt. ctor = default constructor
 // user-def. ctor = user-defined constructor
 
@@ -86,9 +86,9 @@ private:
 public:
     //Z1.1 Dflt. ctor [Postaviti na dflt. vrijednosti (1.1.2021)]
     //Default konstruktor ne prima nikakve paramentre, potrebno je samo staviti default vrijednosti
-    //User-defined konstrukor prima parametre i te parametere smjesta u odgovaraju propertije klase
+    //User-defined konstrukor prima parametre i te parametere smjesta u odgovarajuce propertije klase
     //Copy construktor - jedan od najbitnijih konstruktora
-    //Od objekta tipa te klase napravi kopiju i da alocira svu novu potrebnu memoriju za odredjene propertije
+    //Od objekta tipa te klase napravi kopiju i alocira svu novu potrebnu memoriju za odredjene propertije
 
     //Getteri- svrha gettera jeste da vrate vrate vrijednost odredjenog propertija
     //Setteri- svrha settera jeste da se postavi odredjena vrijednost za neki properti
@@ -368,7 +368,7 @@ public:
     char* GetPrezime() const { return _prezime; }
     Datum GetDatumRodjenja() const{return *_datumRodjenja;}
     //kada imamo Datum samo koristice se konstruktor kopije, dakle vrijednost *_datumRodjenja ce se kopirati u GetDatumRodjenja kreirajuci kopiju objekata i ta kopija ce se vratiti tamo gdje je pozvana
-    //Kada imamo samo Datum prave se novi objekat ce imati iste vrijednosti kao element nase klase 
+    //Kada imamo samo Datum prave se novi objekat koji ce imati iste vrijednosti kao element nase klase 
 	//Da je bilo Datum& ne bi se koristio konstruktor kopije vec bi se vratio objekat koji je element(atribut) te klase
     bool GetSpol() const { return *_spol; }
     const char* GetRadnoMjesto() const { return _radnoMjesto; }
@@ -464,7 +464,7 @@ public:
     {
         _naziv = AlocirajIKopiraj(naziv);
         strcpy_s(_adresa, 100, adresa);
-        _maxBrojDvorana = new int(maxBrojDvorana); //moramo alocirati jer kasnije ne mozemo setovati ako nismo aloirali
+        _maxBrojDvorana = new int(maxBrojDvorana); //moramo alocirati jer kasnije ne mozemo setovati ako nismo alocirali
         //_maxBrojDvorana ima nevalidnu vrijednost u trenutnku kada se kreira i dereferenciranje nevalidne vrijednosti dovodi do greske, zato alociramo
         //_maxBrojDvorana = new int(maxBrojDvorana); poziva konstruktor kopije za primitivni tip integer
         _trenutnoDvorana = 0;
@@ -510,6 +510,19 @@ public:
         _uposlenici[_trenutnoUposlenika]->SetSpol(uposlenik.GetSpol());
         _uposlenici[_trenutnoUposlenika]->SetEmail(uposlenik.GetEmail());
         _uposlenici[_trenutnoUposlenika]->SetRadnoMjesto(uposlenik.GetRadnoMjesto());
+	    
+	    /*Drugi nacin
+	    const char* ime = uposlenik.GetIme();
+		const char* prezime = uposlenik.GetPrezime();
+		Datum datum = uposlenik.GetDatumRodjenja();
+		bool spol = uposlenik.GetSpol();
+		const char* radnoMjesto = uposlenik.GetRadnoMjesto();
+		const char* grad = uposlenik.GetGrad();
+		const char* email = uposlenik.GetEmail();
+		_uposlenici[_trenutnoUposlenika] = new Uposlenik(ime, prezime, datum, spol, radnoMjesto, grad, email);
+		_trenutnoUposlenika++;
+		return true;
+	    */
     }
     //Z4.7
      //Ispisati naziv kina, adresu, nazive dvorana, te imena i prezimena uposlenika
