@@ -2,7 +2,7 @@
 
 <hr>
 
-**private: ** //obicno dio gdje se navode atributi/obiljezja klase ali moze biti i mnostvo funkcija, vidjeljivo je samo unutar klae odnosno jedino vidimo iz funkcija koje su clanice klase, ovo je oblik neke zastite
+**private:** //obicno dio gdje se navode atributi/obiljezja klase ali moze biti i mnostvo funkcija, vidjeljivo je samo unutar klae odnosno jedino vidimo iz funkcija koje su clanice klase, ovo je oblik neke zastite
 
 **public:** //nalaze se oni dijelovi koje mogu pozivati svi objekti ove kalase
 
@@ -10,7 +10,7 @@
 
 **atribute** inicijalizujemo pocetnom donjom crticom tako da jasno napravimo distinkciju izmedju atributa i parametra. 
 
-**this **//interni pokazivac, ukoliko zelimo da nam se parametar funkcije i atribut/obiljezje funkcije nazivaju isto mozemo korisititi ovaj interni pokazivac.
+**this**//interni pokazivac, ukoliko zelimo da nam se parametar funkcije i atribut/obiljezje funkcije nazivaju isto mozemo korisititi ovaj interni pokazivac.
 
 Kljucna rijec **this->** jasno naznacava da zelimo da referenciramo nekoga ko je clanica klase (atribut te klase), a ne nekoga ko se nalazi u listi parametara
 
