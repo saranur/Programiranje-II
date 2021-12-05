@@ -11,7 +11,7 @@ _Get Familiar_ ~ [Tips and Tricks](https://github.com/saranur/Programiranje-II/b
   <summary>Predavanja</summary>
   <br>
   <ul>
-    <li><a href="">Predavanje 1 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%201%20-%20PRII.md">Teorija</a></li>
+    <li><a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje-1.cpp">Predavanje 1 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%201%20-%20PRII.md">Teorija</a></li>
     <li><a href="">Predavanje 2 - PRII</a>  -  <a href="">Teorija</a></li>
     <li><a href="">Predavanje 3 - PRII</a>  -  <a href="">Teorija</a></li>
     <li><a href="">Predavanje 4 - PRII</a>  -  <a href="">Teorija</a></li>
