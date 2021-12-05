@@ -6,6 +6,22 @@ _Get Familiar_ ~ [Tips and Tricks](https://github.com/saranur/Programiranje-II/b
 </br>
 [Snimljena predavanja i vježbe (2020/2021)](https://www.youtube.com/watch?v=R_atSYLO4xI&list=PLJCjqoTZy0H9MTHMyfmoLOqs828E7c0OZ)
 <hr>
+
+<details>
+  <summary>Predavanja</summary>
+  <br>
+  <ul>
+    <li><a href="">Predavanje 1 - PRII</a>  -  <a href="">Teorija</a></li>
+    <li><a href="">Predavanje 2 - PRII</a>  -  <a href="">Teorija</a></li>
+    <li><a href="">Predavanje 3 - PRII</a>  -  <a href="">Teorija</a></li>
+    <li><a href="">Predavanje 4 - PRII</a>  -  <a href="">Teorija</a></li>
+    <li><a href="">Predavanje 5 - PRII</a>  -  <a href="">Teorija</a></li>
+    <li><a href="">Predavanje 6 - PRII</a>  -  <a href="">Teorija</a></li>
+   
+  </ul>
+  </details>
+<hr>
+
 <details>
 <summary>Vježbe</summary>
 <br>
