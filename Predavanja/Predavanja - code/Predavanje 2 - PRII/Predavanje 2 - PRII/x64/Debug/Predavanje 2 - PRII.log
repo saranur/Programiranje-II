@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\Predavanje 2 - PRII\Source.cpp(7,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\Predavanje 2 - PRII\Source.cpp(144,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Predavanje 2 - PRII.vcxproj -> C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\x64\Debug\Predavanje 2 - PRII.exe

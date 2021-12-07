@@ -1,0 +1,11 @@
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\bin\Debug\DateTimeTest.exe.config
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\bin\Debug\DateTimeTest.exe
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\bin\Debug\DateTimeTest.pdb
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\obj\Debug\DateTimeTest.csproj.AssemblyReference.cache
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\obj\Debug\DateTimeTest.csproj.SuggestedBindingRedirects.cache
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\obj\Debug\DateTimeTest.Form1.resources
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\obj\Debug\DateTimeTest.Properties.Resources.resources
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\obj\Debug\DateTimeTest.csproj.GenerateResource.cache
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\obj\Debug\DateTimeTest.csproj.CoreCompileInputs.cache
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\obj\Debug\DateTimeTest.exe
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Documents\C++\Programiranje II\Predavanja\Predavanje 2 - PRII\DateTimeTest\obj\Debug\DateTimeTest.pdb
