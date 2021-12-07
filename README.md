@@ -1,8 +1,6 @@
 # Programiranje-II
 
 _Repozitorij za zadatke iz Programiranja II_
-
-_Get Familiar_ ~ [Tips and Tricks](https://github.com/saranur/Programiranje-II/blob/main/Uvod%20u%20Programiranje%20II.md)
 </br>
 [Snimljena predavanja i vježbe (2020/2021)](https://www.youtube.com/watch?v=R_atSYLO4xI&list=PLJCjqoTZy0H9MTHMyfmoLOqs828E7c0OZ)
 <hr>
