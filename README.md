@@ -42,7 +42,7 @@ _Repozitorij za zadatke iz Programiranja II_
 <hr>
 <details>
 <summary>Ispitni zadaci</summary>
-<hr>
+<br>
 
  <p>Ispitni 16.07.2021 G2 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2016.07.2021%20G2%20postavka.pdf"> Postavka </a>  <a href=""> Rješenje </a></p>
  <p>Ispitni 16.07.2021 G1 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2016.07.2021%20%20G1%20postavka.pdf"> Postavka</a>  <a href=""> Rješenje </a></p> 
