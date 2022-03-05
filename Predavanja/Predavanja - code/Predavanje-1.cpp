@@ -25,7 +25,8 @@ public: /*
 		this->sirina = 0; //neke defaultne vrijednosti
 		this->visina = 0;
 	}
-	*/ //zakomentarisali smo defaultni konstrukor jer smo sada metodu PostaviVrijednosti transformisali u konstrukor. Ne mozemo imati oba konstrukora jer bi nam se kompajler bunio, oba imaju neke vec unesene vrijesnosti 
+	*/ 
+	//zakomentarisali smo defaultni konstrukor jer smo sada metodu PostaviVrijednosti transformisali u konstrukor. Ne mozemo imati oba konstrukora jer bi nam se kompajler bunio, oba imaju neke vec unesene vrijesnosti 
 	
 	//konstrukor
 	Dugmic(int sirina = 15, int visina = 3) { //metoda
@@ -39,11 +40,11 @@ public: /*
 	int GetSirina() const{ return sirina; } //obzirom da je ovo const metoda, ne mozemo modifikovati vrijednosti vec iskljucivo vratiti vrijednosti tog atributa.
 	void Prikazi() { //ovo je metoda
 	/*
-	-------------------------------------
-	|									|
-	|									|
-	|									|
-	-------------------------------------
+	-----------------------------------------
+	|					|
+	|					|
+	|					|
+	-----------------------------------------
 	*/
 		for (int i = 0; i < visina; i++)
 		{
@@ -75,8 +76,9 @@ class XO {
 				niz[i][j] = ' ';
 	}
 	void GetKoordinateIzLokacije(int lokacija, int& r, int& k) {
-		if (lokacija <= 3)
-			r = 0, k = lokacija - 1;
+		 /*if (lokacija <= 3)
+			r = 0, k = lokacija - 1; //ili mozemo uraditi na ovaj nacin, s tim da ispitmano za lokaciju <=3,6 i 9.
+			*/
 		switch (lokacija)
 		{
 		case 1: r = 0; k = 0; break;
