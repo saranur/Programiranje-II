@@ -45,5 +45,5 @@ char* ToString() {
 		return temp;
 ```
 
-**Za pozivanje željenih konstrukora neke klase unutar neke druge klase, u zaglavlju te druge klase možemo napisati znak : i mo\emo naglasiti koji konstrukor želimo da pozovemo.** 
+**Za pozivanje željenih konstrukora neke klase unutar neke druge klase, u zaglavlju te druge klase možemo napisati znak : i možemo naglasiti koji konstrukor želimo da pozovemo.** 
 
