@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Druga Godina\Programiranje II\Vježbe\Vježba 2\pr2_v2_bioskop_rjesenje\pr2_v2\PomocneFunkcije.h(10,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Druga Godina\Programiranje II\Vježbe\Vježba 2\pr2_v2_bioskop_rjesenje\pr2_v2\Sala.h(102): warning C4715: 'Sala::GetSjediste': not all control paths return a value
+  pr2_v2.vcxproj -> C:\Users\Sara Nur\OneDrive - Faculty of Information Technologies\Druga Godina\Programiranje II\Vježbe\Vježba 2\pr2_v2_bioskop_rjesenje\x64\Debug\pr2_v2.exe
