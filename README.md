@@ -31,7 +31,7 @@ _Repozitorij za zadatke iz Programiranja II_
   Vježba 3 - Konstrukturi i destruktori: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/V3_Postavka.docx?raw=true"> Postavka </a>  <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Rje%C5%A1enja/Vje%C5%BEbe%203%20-%20Rje%C5%A1enje.cpp"> Rješenje </a> 
 <p>
   
-  Vježbe 4 - Preklapanje operatora: <a href="https://github.com/saranur/Programiranje-II/raw/main/Vje%C5%BEbe/Postavke/V4_Postavka.docx"> Postavka </a>  <a href=""> Rješenje </a>  </p>
+  Vježbe 4 - Preklapanje operatora: <a href="https://github.com/saranur/Programiranje-II/raw/main/Vje%C5%BEbe/Postavke/V4_Postavka.docx"> Postavka </a>  <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Rje%C5%A1enja/Vje%C5%BEbe%204%20-%20Rje%C5%A1enje.cpp"> Rješenje </a>  </p>
 <p> Vježba 5 - Generičke funkcije i klase: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/V5_Postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a></p>
 <p> Vježba 5.1 - Napredne funkcije: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/Postavka%205.1.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a></p>
 <p> Probni ispit (Prva parcijala) 20.04.2021: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/Music%20probni%20.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p>
