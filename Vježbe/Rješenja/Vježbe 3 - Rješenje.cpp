@@ -2,7 +2,7 @@
 using namespace std;
 
 /* ::NAPOMENA::
-Radi jednostavnije izrade i lakseg testiranja zadataka, komentirajte testni dio koda, koji je obuhvacen funkcijama sa prefixom 'Zadatak'.
+Radi jednostavnije izrade i lakseg testiranja zadataka komentirajte testni dio koda, koji je obuhvacen funkcijama sa prefixom 'Zadatak'.
 Kako budete implementirali odredjene funkcionalnosti, tada lagano pocnite sa 'otkrivanjem' komentiranih dijelova koda.
 */
 
@@ -13,9 +13,9 @@ Kako budete implementirali odredjene funkcionalnosti, tada lagano pocnite sa 'ot
 // copy ctor = copy constructor (konstruktor kopije)
 // move ctor = move constructor (konstruktor premjestanja)
 
-//Z1.0
+//Z0.1
 char* AlocirajIKopiraj(const char* tekst) {
-    if (tekst == nullptr)
+    if (tekst == nullptr) //provjeravamo jel nullptr jer ako dobije nullptr program ce pasti 
         return nullptr;
     int vel = strlen(tekst) + 1;
     char* novi = new char[vel];
@@ -23,8 +23,47 @@ char* AlocirajIKopiraj(const char* tekst) {
     return novi;
 }
 
-int Min(int a, int b) {return (a <= b) ? a : b; }
-int Max(int a, int b) {return (a >= b) ? a : b; }
+int Min(int broj1, int broj2) { return (broj1 <= broj2) ? broj1 : broj2; }
+int Max(int broj1, int broj2) { return (broj1 >= broj2) ? broj1 : broj2; }
+
+//Z0.2 :: Vratiti broj znamenki za dati broj
+int IzracunajBrojZnamenki(int broj) {
+    int brojZnamenki = 0;
+    do
+    {
+        ++brojZnamenki;
+        broj /= 10;
+    } while (broj);
+    return brojZnamenki;
+}
+
+//Z0.3 :: Pretvoriti (int) u (char*). Obezbijediti da je 'broj' u opsegu [INT_MIN, INT_MAX]
+char* IntToStr(int broj) {
+    broj = Min(broj, INT_MAX); //obezbjedjujemo da je broj manji od maksimalnog broja 
+    broj = Max(broj, INT_MIN);
+    int vel = IzracunajBrojZnamenki(broj) + 1;
+    char* tekst = new char[vel];
+    itoa_s(broj, tekst, vel, 10);
+    //saljemo broj, zatim buffer u koji ce se pohraniti, zatim velicinu, i onda radix ondnosno brojni sistem u kojem je broj
+    //takodjer cemo se morati sjetiti da dealociramo ono sto je ona alocirala 
+}
+
+bool PrijestupnaGodina(int godina) {
+    return (((godina % 4 == 0) && (godina % 100 != 0)) ||
+        (godina % 400 == 0));
+}
+
+//Z0.4 :: Vratiti broj dana za dati mjesec (Voditi racuna o prijestupnim godinama)
+int GetBrojDanaUMjesecu(int mjesec, int godina) {
+    switch (mjesec)
+    {
+    case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+        return 31;
+    case 2: return PrijestupnaGodina(godina) ? 29 : 28;
+    default:
+        return 30;
+    }
+}
 
 class Datum
 {
@@ -33,742 +72,497 @@ private:
     int* _mjesec;
     int* _godina;
 public:
-    //Z1.1 Dflt. ctor [Postaviti na dflt. vrijednosti]
+    //Z1.1 :: Dflt. ctor 
     Datum() {
         _dan = nullptr;
         _mjesec = nullptr;
         _godina = nullptr;
     }
-    //Z1.2 User-def. ctor
+
+    //Z1.2 :: User-def. ctor
     Datum(int d, int m, int g) {
-        _dan = new int(d); //pozivamo ctor kopije za integer
+        _dan = new int(d);
         _mjesec = new int(m);
         _godina = new int(g);
-        /* 2 nacin
-        _dan =new int;
-        *_dan=d; */
     }
 
-    //Kod konstruktora kopije alocira se novi prostor i tek onda se kopiraju vrijednosti
-    //Proces premještanja je znatno brži od kopiranja jer on mijenja samo adrese bez alociranja novog prostora za svaki (npr atribut)
-
-
-    //Z1.3 Copy ctor
+    //Z1.3 :: Copy ctor
     Datum(const Datum& obj) {
         _dan = new int(*obj._dan);
         _mjesec = new int(*obj._mjesec);
         _godina = new int(*obj._godina);
-        //Konstruktor kopije klase Datum poziva konstruktor kopije int
-        //Konstruktori kopija visih klasa pozivaju konstruktore kopija svojih podklasa/klasa cije su instance njegovi atributi
-    
+        //ovdje radimo dereferenciranje pokazivaca jer u suprotnom bi znacilo da oba pokizavaca pokazuju na istu memorijsku lokaciju 
+        //cilj je da se konstruise novi objekat i da se kopira vrijednost iz vec postojeceg objekta 
     }
-    //Indikator za move konstruktor je dupli ampersand &&
-    //Kod move ctor ne možemo staviti ključnu riječ konst jer moramo raditi modifikaciju nad ovim objektom
-    //Z1.4 Move ctor
+
+    //Z1.4 :: Move ctor
     Datum(Datum&& obj) {
         _dan = obj._dan;
-        obj._dan = nullptr; //moramo naglasiti da su oni null, jer bi onda imali dva objekta ciji pokazivaci pokazivaju na istu lokaciju
-        //moze nastati problem u dealokaciji sto mi cesto zovemo dijeljenje memorije (kad dva pokazivaca pokazuju na istu adresu)
+        obj._dan = nullptr;
         _mjesec = obj._mjesec;
         obj._mjesec = nullptr;
         _godina = obj._godina;
         obj._godina = nullptr;
-    
     }
-    //Z1.5
+    //Operatori su funkcije kao i svaka druga, jedina razlika u pisanju operatora i funkcije je u nazivu 
+    //Z1.5 :: Operator = 
+    //(operator dodjele ) se smije pojaviti samo kao clanica funkcije, ne moze se pojaviti neovisno
+    //**Cilj operatora dodjele** je da primi objekat koji je istog tipa, obavezno po referenci i koji je konstantan, te onda uradi kopiranje sadrzaja iz atributa ovog objekta u atribute objekta s kojim trenutno radimo. 
+    //Slican je copy konstruktoru.
+    //Operator dodjele obavlja funkciju koju su do sada obavljali setteri, ali sve odjednom
+    //deadlocirace ono sto je prethodno alocirano, alocirace novi prostor i onda postaviti vrijednosti 
+    //vraticemo objekat sa kojim trenutno radimo 
+    Datum& operator =(const Datum& obj) {
+        //prvo provjerimo da li npr neko unio d1=d1
+        if (*this == &obj)  //gledamo da li je objekat s kojim trenutno radimo jednak objektu koji je prosljedjen kao parametar 
+            return *this; //vracamo trenutni objekat 
+        if (_dan == nullptr)  _dan = new int; //ovo provjeru imamo u slucaju da je neko koristio dflt. ctor i onda kasnije koristi operator dodjele 
+        if (_mjesec == nullptr)  _mjesec = new int; //zbog toga ako nisu alocirani, alociraj ih
+        if (_godina == nullptr) _godina = new int;
+        //sada cemo im dodjeliti vrijednosti
+        *_dan = *obj._dan;
+        *_mjesec = *obj._mjesec;
+        *_godina = *obj._godina;
+    }
+
+    //Z1.6 :: Getteri
     int GetDan() const { return *_dan; }
     int GetMjesec() const { return *_mjesec; }
     int GetGodina() const { return *_godina; }
-    //Z1.6
+
+    //Z1.7 :: Setteri
     void SetDan(int dan) {
-        if (_dan == nullptr)
-            _dan = new int;
+        if (_dan == nullptr) _dan = new int;
         *_dan = dan;
-        //kad imamo dinamicki kreiranje objekte onda moramo provjeriti jel nullptr, ako jeste alociramo vrijednost prvo pa onda setujemo
     }
     void SetMjesec(int mjesec) {
-        if (_mjesec == nullptr)
-            _mjesec = new int;
+        if (_mjesec == nullptr) _mjesec = new int;
         *_mjesec = mjesec;
     }
     void SetGodina(int godina) {
-        if (_godina == nullptr)
-            _godina = new int;
+        if (_godina == nullptr) _godina = new int;
         *_godina = godina;
     }
-    //Z1.7
-    void Ispis() { cout << *_dan << "." << *_mjesec << "." << *_godina << endl; }
-    //Z1.8
+    //Z1.8 :: dtor
     ~Datum() {
-        delete _dan;
-        _dan = nullptr;
-        delete _mjesec;
-        _mjesec = nullptr;
-        delete _godina;
-        _godina = nullptr;
+        delete _dan, _mjesec, _godina;
+        _dan = _mjesec = _godina = nullptr;
+
     }
+    friend ostream& operator << (ostream& COUT, const Datum obj);
+    friend bool operator == (const Datum& d1, const Datum& d2);
+    friend bool operator != (const Datum& d1, const Datum& d2);
 };
-class Glumac
-{
-private:
-    char* _ime;
-    char* _prezime;
-    char* _zemljaPorijekla;
-    Datum* _datumRodjenja;
-    bool* _spol; //1-Muski, 0-Zenski
-public:
-    //Z2.0 Dflt. ctor
-    Glumac() {
-        _ime = nullptr;
-        _prezime = nullptr;
-        _zemljaPorijekla = nullptr;
-        _datumRodjenja = nullptr;
-        _spol = nullptr;
 
-    }
-    //Z2.1 User-def. ctor
-    Glumac(const char* ime, const char* prez, const char* zemlja, int d, int m, int g, bool spol) {
-        _ime = AlocirajIKopiraj(ime);
-        _prezime = AlocirajIKopiraj(prez);
-        _zemljaPorijekla = AlocirajIKopiraj(zemlja);
-        _datumRodjenja = new Datum(d, m, g); //ovjde ce se pozvati korisnicki definiran konstruktor klase Datum
-        _spol = new bool(spol);
-    }
-    //Z2.2 Copy ctor
-    Glumac(const Glumac& obj) {
 
-        _ime = AlocirajIKopiraj(obj._ime); //moze i bez gettera ali je konvencija da se koriste 
-        _prezime = AlocirajIKopiraj(obj._prezime);
-        _zemljaPorijekla = AlocirajIKopiraj(obj._zemljaPorijekla);
-        _datumRodjenja = new Datum(obj.GetDatumRodjenja());
-        _spol = new bool(*obj._spol); 
+//Z1.9 :: Ispisati datum
+//Operator redirekcije <<, uglavnom se koristi u svrhu ispisa i on je binarni operator (prima dva parametra)
+//Prvi parametar - objekat koji prima je instanca ostream klase (output stream), objekti ove klase koriste se za komunikaciju s konzlom  
+//Preko njih se direktno komunicira i stavi se upisuju na konzolo 
+//Drugi parametar to je onaj parametar koji ce se ispisivati 
+//Operator redirekcije je vec definiran za primitivne tipove kao sto su float, double, int... 
+//Medjutim, operator redirekcije nije definiran za korisnicke definirane, zbog toga ga definiramo  
+//Uglavnom ce biti koristen kao globalna funkcija 
+//Ako zelimo da globalna funckija moze pristupiti  clanovima odnosno elementima odredjene klase onda je mozemo proglasiti friend funkcijom i prepisemo njen prototip
+ ostream& operator << (ostream& COUT, const Datum obj) {
+     COUT << *obj._dan << "." << *obj._mjesec << "." << *obj._godina;
+}
 
-    }
-    //Z2.3 Move ctor
-    Glumac(Glumac&& obj) {
-        _ime = obj._ime;
-        obj._ime = nullptr;
-        _prezime = obj._prezime;
-        obj._prezime = nullptr;
-        _zemljaPorijekla = obj._zemljaPorijekla;
-        obj._zemljaPorijekla = nullptr;
-        _spol = obj._spol;
-        obj._spol = nullptr;
+//Z1.10 :: Porediti dva datuma po vrijednostima atributa
+ //Binarni operator, prima dva parametra i on poredi da li su dva datuma jednaka 
+ bool operator == (const Datum& d1, const Datum& d2) {
+     return *d1._dan==*d2._dan && 
+         *d1._mjesec == *d2._mjesec && 
+         *d1._godina == *d2._godina
+}
 
-        //da smo imali niz karaktera npr
-        //char _ime[40] //tada bi move ctor izgledao:
-        // strcpy_s(_ime, 40, obj._ime);
-        // strcpy_s(_ime, 40, "");
+ bool operator != (const Datum& d1, const Datum& d2) {
+     return !(d1 == d2); //samo negiramo 
+}
 
-        }
-    //Z2.4
-    char* GetIme() const { return _ime; }
-    //Dobra je praksa proglasiti Getere const jer ne mijenjamo vrijednosti vec samo uzimamo vrijednosti
-    char* GetPrezime() const { return _prezime; }
-    char* GetZemljaPorijekla() const { return _zemljaPorijekla; }
-    Datum GetDatumRodjenja() const { return *_datumRodjenja; }
-  // kada specificiramo samo tip podatka npr Datum, onda te poziva ctor kopije te klase (Datum) i privremeno se kreira kopija tog objekta i postoji sve dok se ne vrati u mjesto poziva
-    //kada stavimo Datum onda ga vracamo kao kopiju
-  //da je bilo Datum& promjene bi se desavale na istoj lokaciji 
-    bool GetSpol() const { return _spol; }
-
-    //Z2.5
-    void SetIme(const char* ime) {
-        delete[] _ime;
-        _ime = AlocirajIKopiraj(ime);
-            
-        //kod nizova karaktera prvo obrisemo niz pa tek setujemo vrijednosti
-        //brisemo niz radi prosirivanja
-        //npr. ako je stari niz imao 10 karaktera, a mi pokusavamo da unesemo ime sa 12 karaktera, necemo moci da setujemo vrijednosti 
-        //takodjer ako je _ime bilo nullptr on bi samo ignorisao, on brise samo ako nije prazan i stavlja ga na junk vrijednosti 
-    }
-    void SetPrezime(const char* prezime)
-        //koristi se const char* je sigurnosni mehanizam
-        //obezbjedjuje da se niz prezime, odnosno adresa prvog clana prezime koji cuva adresu, nece mijenjati
+//Z1.11 :: Kreirati novi datum kao rezultat dodavanja varijable 'brojDana' na objekat 'obj'
+Datum operator + (Datum& obj, int brojDana) {
+    int dan = obj.GetDan(), mjesec = obj.GetMjesec(), godina = obj.GetGodina();
+    for (size_t i = 0; i < val; i++)
     {
-        delete[] _prezime;
-        _prezime = AlocirajIKopiraj(prezime);
-    }
-    void SetZemljaPorijekla(const char* zemlja) {
-        delete[] _zemljaPorijekla;
-        _zemljaPorijekla = AlocirajIKopiraj(zemlja);
-    }
-    void SetDatumRodjenja(Datum datumRodjenja) 
-    //ovjde imamo samo Datum, sto znaci da kada pozivamo ovu funkciju njoj se prosljedjuje kopija nekog objekta kojeg smo poslali npr. iz main funkcije 
-    //prilikom kreiranje ovog objekta bice pozvan njegov konstuktor kopije
-    //mozemo staviti Datum& da bi izbjegli kopiranje i u tom slucaju ce biti pozvan objekat direktno po referenci
-    //takodjer mozemo staviti Datum* i u tom slucaju saljemo adresu nekoh objekta tipa Datum iz recimo main funkcije ovjde 
-    //kod Datum& se salje cijeli objekat zajedno sa adresom, a kod Datum* se salje samo adresa tog objekta
-    //a kod Datum se kreira novi objekat i kopiraju se vrijednosti 
-    {
-        //ista je logika kad su u pitanju seteri za integere i datume
-        if (_datumRodjenja == nullptr)
-            _datumRodjenja = new Datum;
-        // s obzirom da objekat vec postoji ne mozemo ga kreirati ponovo pa pozivamo njegove setere
-        _datumRodjenja->SetDan(datumRodjenja.GetDan());
-        _datumRodjenja->SetMjesec(datumRodjenja.GetMjesec());
-        _datumRodjenja->SetGodina(datumRodjenja.GetGodina());
-  
-    }
-
-    void SetSpol(bool spol) {
-        if (_spol == nullptr)
-            _spol = new bool;
-        *_spol = spol;
-    }
-
-    //Z2.6
-    void Ispis() {
-        cout << "Ime i prezime: " << _ime << " " << _prezime << endl;
-        cout << "Zemlja porijekla: " << _zemljaPorijekla << endl;
-        cout << "Datum rodjenja: ";
-        _datumRodjenja->Ispis();
-        cout << "Spol: " << ((*_spol == true) ? "Muski" : "Zenski") << endl;
-           
-    }
-    //Z2.7
-    ~Glumac() {
-        delete[] _ime;
-        _ime = nullptr;
-        delete[] _prezime;
-        _prezime = nullptr;
-        delete[] _zemljaPorijekla;
-        _zemljaPorijekla = nullptr;
-        delete _datumRodjenja;
-        _datumRodjenja = nullptr;
-    }
-};
-class Epizoda {
-private:
-    char* _naziv;
-    int* _trajanje; //u minutama
-    char _kratakSadrzaj[100];
-    Datum _datumPremijere;
-    int _maxBrojOcjena; // velicina niza
-    int _trenutnoOcjena; //brojac
-    int* _ocjene;
-public:
-    //Z3.0
-    //Settovati vrijednosti na defaultne
-    Epizoda() : _datumPremijere() //ovo nema potrebe jer ce se dflt ctor svakako pozvati za datum premijere ali mozemo dodati
-    {
-        _naziv = nullptr;
-        _trajanje = nullptr;
-        strcpy_s(_kratakSadrzaj, 100, "");
-        _maxBrojOcjena = 0;
-        _trenutnoOcjena = 0;
-        _ocjene = nullptr;
-        //za objekte ne moramo kreirati defaultni ctor jer se on sam poziva 
-        //ovo vazi za _datumPremijere
-    }
-    //Z3.1
-    Epizoda(const char* naziv, int trajanje, const char* kratakOpis, Datum datum, int ukupnoOcjena) 
-        : _datumPremijere(datum.GetDan(), datum.GetMjesec(), datum.GetGodina())
-    {
-        _naziv = AlocirajIKopiraj(naziv);
-        _trajanje = new int(trajanje);
-        strcpy_s(_kratakSadrzaj, 100, kratakOpis);
-        _maxBrojOcjena = ukupnoOcjena;
-        _trenutnoOcjena = 0;
-        _ocjene = new int[_maxBrojOcjena];
-    }
-    //Z3.2
-    Epizoda(const Epizoda& obj)//Po konvenciji trebamo koristiti za sve korisnicki definirane propertije, u headeru trebamo koristiti 
-        : _datumPremijere(obj._datumPremijere)  //ctor kopije od child klase poziva ctor kopije od parent klase
-    //Parent klasa je svaka klasa koja ima instancu unutar child klase, u ovom slucaju parent je Datum, a child Epizoda
-    {
-        _naziv = AlocirajIKopiraj(obj._naziv);
-        _trajanje = new int(*obj._trajanje);
-        strcpy_s(_kratakSadrzaj, 100, obj._kratakSadrzaj);
-        _maxBrojOcjena = obj._maxBrojOcjena;
-        _trenutnoOcjena = obj._trenutnoOcjena;
-        _ocjene = new int[_maxBrojOcjena];
-            for (size_t i = 0; i < _maxBrojOcjena; i++)
-                _ocjene[i] = obj._ocjene[i];
-            
-    }
-    //Z3.3
-    Epizoda(Epizoda&& obj)
-       : _datumPremijere(move(obj._datumPremijere))
-        //u headeru smo pozvali move ctor datuma premijere
-    {
-        _naziv = obj._naziv;
-        obj._naziv = nullptr;
-        _trajanje = obj._trajanje;
-        obj._trajanje = nullptr;
-        strcpy_s(_kratakSadrzaj, 100, obj._kratakSadrzaj);
-        //strcpy_s(_kratakSadrzaj, 100,"");
-        _maxBrojOcjena = obj._maxBrojOcjena;
-        obj._maxBrojOcjena = 0;
-        _trenutnoOcjena = obj._trenutnoOcjena;
-        obj._trenutnoOcjena = 0;
-        _ocjene = obj._ocjene;
-        obj._ocjene = nullptr;
-        
-    }
-
-    //Z3.4
-    char* GetNaziv() const { return _naziv; }
-    int GetTrajanje() const { return *_trajanje; }
-    const char* GetKratakSadrzaj() const { return _kratakSadrzaj; }
-    Datum GetDatumPremijere() const { return _datumPremijere; }
-    int GetTrenutnoOcjena() const { return _trenutnoOcjena; }
-    int GetMaxBrojOcjena() const { return _maxBrojOcjena; }
-
-    //Z3.5
-    //Vratiti vrijednost na lokaciji specificiranoj ulaznim parametrom 'index'
-    //Ukoliko je proslijedjena nevalidna vrijednost, potrebno je vratiti element niza sa najblizim validnim indeksom
-    //Npr. Ako je index = -5, vratiti vrijednost _ocjene na indexu 0; Isto vazi i za indekse vece od vrijednosti brojaca '_trenutnoOcjena'.
-    int GetOcjena(int index) const {
-        index = Max(index,0); //ako je index negativna vrijednost, Max vraca 0
-        index = Min(index, _trenutnoOcjena - 1); //ako je trenutno ocjena 10, znaci da je zadnji validni index 9
-        return _ocjene[index];
-    }
-    //Z3.6
-    void SetNaziv(const char* naziv) {
-            delete[] _naziv;
-            _naziv = AlocirajIKopiraj(naziv);
-    }
-    void SetTrajanje(int trajanje) {
-        if (_trajanje == nullptr)
-            _trajanje = new int;
-        *_trajanje = trajanje;
-    }
-    void SetKratakSadrzaj(const char* kratakSadrzaj) {
-        strcpy_s(_kratakSadrzaj, 100, kratakSadrzaj);
-    }
-    void SetDatumPremijere(Datum datum) {
-        _datumPremijere.SetDan(datum.GetDan());
-        _datumPremijere.SetMjesec(datum.GetMjesec());
-        _datumPremijere.SetGodina(datum.GetGodina());
-    }
-
-    //Z3.7
-    //Prosiriti niza _ocjene na sljedeci nacin:
-    //  *Konstruisati novi niz velicine [_maxBrojOcjena + prosiriZa]
-    //  *Kopirati vrijednosti iz starog niza u novi niz
-    //  *Dealocirati stari niz
-    void ProsiriNizOcjena(int prosiriZa) {
-        if (_ocjene == nullptr) { //npr ako je bio pozvan nullptr, _ocjene bi bio nullptr pa vrsimo provjeru
-            _ocjene = new int[prosiriZa];
-            return;
-        }
-        int* temp = _ocjene; // ona pamti stari niz 
-        //ovim tempom biljezimo lokaciju starog niza 
-        _maxBrojOcjena += prosiriZa;
-        _ocjene = new int[_maxBrojOcjena];
-        //sada vrsimo kopiranje
-        for (size_t i = 0; i < _trenutnoOcjena; i++) //mozemo staviti ili _maxBrojOcjena
-            _ocjene[i] = temp[i]; 
-        delete[] temp;
-        temp = nullptr;
-    }
-
-    //Z3.8
-    //Ukoliko je brojac dosao do kraja (jednak velicini niza), uraditi prosirivanje niza za 10 elemenata;
-    void DodajOcjenu(int ocjena){
-        if (_trenutnoOcjena == _maxBrojOcjena) 
-            ProsiriNizOcjena(10);
-            _ocjene[_trenutnoOcjena] = ocjena;
-            _trenutnoOcjena++;
-    }
-    //Z3.9
-    bool UkloniZadnjuOcjenu() {
-        if (_trenutnoOcjena == 0)
-            return false;
-        _trenutnoOcjena--;
-        return true;
-    }
-    //Z3.10
-    float GetProsjecnaOcjena() {
-        if (_trenutnoOcjena == 0)
-            return 0.0;
-        float suma = 0.0;
-        for (size_t i = 0; i < _trenutnoOcjena; i++)
-            suma += _ocjene[i];
-        return suma / _trenutnoOcjena;
-    }
-    //Z3.11
-    void Ispis() {
-        cout << "Naziv: "<<_naziv <<endl;
-        cout << "Trajanje (u minutama): "<<*_trajanje <<endl;
-        cout << "Kratak sadrzaj: "<< _kratakSadrzaj<<endl;
-        cout << "Premijerno prikazivanje: ";
-        _datumPremijere.Ispis();
-        cout << "Prosjecna ocjena: "<<GetProsjecnaOcjena() << endl;
-
-    }
-    //Z3.12
-    ~Epizoda() {
-        delete[] _naziv;
-        _naziv = nullptr;
-        delete _trajanje;
-        _trajanje = nullptr;
-        delete[] _ocjene;
-        _ocjene = nullptr;
-    }
-};
-class Uloga {
-private:
-    Glumac* _glumac;
-    char* _opis;
-    char* _tipUloge; //Glavna, sporedna, epizodna, statista, gostujuca zvijezda, cameo ...
-public:
-    //Z4.0
-    Uloga() {
-        _glumac = nullptr;
-        _opis = nullptr;
-        _tipUloge = nullptr;
-    }
-    //Z4.1
-    Uloga(Glumac& glumac, const char* opis, const char* tip) 
-  //  :_glumac(new Glumac(glumac))
-    {
-        _glumac = new Glumac(glumac); //iskoristili smo ctor kopije glumca, ovo je zakomentirano jer smo ga pozvali u headeru, ovo je drugi nacin
-        _opis = AlocirajIKopiraj(opis);
-        _tipUloge = AlocirajIKopiraj(tip);
-    }
-    //Z4.2
-    Uloga(const Uloga& obj) 
-    //   : _glumac(new Glumac(*obj._glumac))
-    {
-        _glumac = new Glumac(*obj._glumac); //drugi nacin
-        _opis = AlocirajIKopiraj(obj._opis);
-        _tipUloge = AlocirajIKopiraj(obj._tipUloge);
-
-    }
-    //Z4.3
-    Uloga(Uloga&& obj)
-    {
-        _glumac = obj._glumac;
-        obj._glumac = nullptr;
-        _opis = obj._opis;
-        obj._opis = nullptr;
-        _tipUloge =obj._tipUloge;
-        obj._tipUloge = nullptr;
-    }
-    //Z4.4
-    Glumac GetGlumac() const { return *_glumac; }
-    char* GetOpis() const { return _opis; }
-    char* GetTipUloge() const { return _tipUloge; }
-    //Z4.5
-    void SetGlumac(Glumac glumac) {
-        if (_glumac == nullptr)
-            _glumac = new Glumac;
-        _glumac->SetIme(glumac.GetIme());
-        _glumac->SetPrezime(glumac.GetPrezime());
-        _glumac->SetDatumRodjenja(glumac.GetDatumRodjenja());
-        _glumac->SetSpol(glumac.GetSpol());
-        _glumac->SetZemljaPorijekla(glumac.GetZemljaPorijekla());
-      
-    }
-    void SetOpis(const char* opis) {
-        delete[] _opis;
-        _opis = AlocirajIKopiraj(opis);
-    }
-    void SetTipUloge(const char* tipUloge) {
-        delete[] _tipUloge;
-        _tipUloge = AlocirajIKopiraj(tipUloge);
-    }
-    //Z4.6
-    void Ispis() {
-        cout << "Glumac: ";
-        _glumac->Ispis();
-        cout << "Opis: " << _opis << endl;
-        cout << "Tip uloge: " << _tipUloge << endl;
-    }
-        //Z4.7
-    ~Uloga() {
-        delete _glumac;
-        _glumac = nullptr;
-        delete[] _opis;
-        _opis = nullptr;
-        delete[] _tipUloge;
-        _tipUloge = nullptr;
-    }
-};
-class Serija {
-private:
-    char* _naziv;
-    int _trenutnoUloga;
-    Uloga* _uloge[50] = { nullptr }; //Svi elementi (pokazivaci) se postavljaju na NULL
-    int _maxBrojEpizoda;
-    int _trenutnoEpizoda;
-    Epizoda* _epizode;
-public:
-    //Z5.0
-    Serija() {
-        _naziv = nullptr;
-        _trenutnoUloga = 0;
-        _maxBrojEpizoda = 0;
-        _trenutnoEpizoda = 0;
-        _epizode = nullptr;
-    }
-    //Z5.1
-    Serija(const char* naziv, int maxBrojEpizoda) {
-        _naziv = AlocirajIKopiraj(naziv);
-        _trenutnoUloga = 0;
-        _epizode = new Epizoda[_maxBrojEpizoda]; //Pozivaju se defaultni konstruktori za elemente niza
-        _maxBrojEpizoda = maxBrojEpizoda;
-        _trenutnoEpizoda = 0;
-    }
-    //Z5.2
-    Serija(const Serija& obj) {
-        _naziv = AlocirajIKopiraj(obj._naziv);
-        _trenutnoUloga = obj._trenutnoUloga;
-        for (size_t i = 0; i < _trenutnoUloga; i++)
-            _uloge[i] = new Uloga(*obj._uloge[i]);
-        _maxBrojEpizoda = obj._maxBrojEpizoda;  
-        _epizode = new Epizoda[_maxBrojEpizoda];
-        for (size_t i = 0; i < _trenutnoEpizoda; i++)
-        {
-            _epizode[i].SetNaziv(obj._epizode[i].GetNaziv());
-            _epizode[i].SetTrajanje(obj._epizode[i].GetTrajanje());
-            _epizode[i].SetKratakSadrzaj(obj._epizode[i].GetKratakSadrzaj());
-            _epizode[i].SetDatumPremijere(obj._epizode[i].GetDatumPremijere());
-            for (size_t j = 0; j < obj._epizode[i].GetTrenutnoOcjena(); j++)
-                _epizode[i].DodajOcjenu(obj._epizode[i].GetOcjena(j));
-        }
-        _trenutnoEpizoda = obj._trenutnoEpizoda;
-
-    }
-    //Z5.3
-    bool DodajUlogu(Uloga& uloga) {
-        if (_trenutnoUloga == 50)
-            return false;
-        //Obzirom da objekti (tipa Uloga) vec postoje, koristimo settere 
-        _uloge[_trenutnoUloga] = new Uloga(uloga);
-        _trenutnoUloga++;
-        return true;
-    }
-    //Z5.4
-    bool DodajEpizodu(Epizoda& ep) {
-        if (_trenutnoEpizoda == _maxBrojEpizoda)
-            return false;
-        _epizode[_trenutnoEpizoda].SetNaziv(ep.GetNaziv());
-        _epizode[_trenutnoEpizoda].SetTrajanje(ep.GetTrajanje());
-        _epizode[_trenutnoEpizoda].SetKratakSadrzaj(ep.GetKratakSadrzaj());
-        _epizode[_trenutnoEpizoda].SetDatumPremijere(ep.GetDatumPremijere());
-        for (size_t i = 0; i < ep.GetTrenutnoOcjena(); i++) {
-            int ocjena = ep.GetOcjena(i);
-            _epizode[_trenutnoEpizoda].DodajOcjenu(ocjena);
-        }
-        _trenutnoEpizoda++;
-        return true;
-    }
-    //Z5.5
-    Epizoda* GetNajboljeOcijenjenaEpizoda() {
-        Epizoda* adresa = _epizode; //adresa 0-og elementa u nizu 
-        float najvecaProsjecna = 0.0;
-        for (size_t i = 0; i < _trenutnoEpizoda; i++) {
-            if (najvecaProsjecna <= _epizode[i].GetProsjecnaOcjena())
-            {
-                najvecaProsjecna = _epizode[i].GetProsjecnaOcjena();
-                adresa = _epizode + i;
+        if (dan + 1 <= GetBrojDanaUMjesecu(mjesec, godina))
+            dan++;
+        else {
+            dan = 1;
+            if (mjesec + 1 <= GetBrojDanaUMjesecu(mjesec, godina))
+                mjesec++;
+            else {
+                mjesec = 1;
+                godina++;
             }
         }
-        return adresa;
     }
-    //Z5.6 :: Pored ostalih atributa ispisati i sve uloge i sve epizode
-    void Ispis() {
-        cout << "Naziv serije: " << _naziv << endl;
-        cout << "Broj uloga: " << _trenutnoUloga << endl;
-        for (size_t i = 0; i < _trenutnoUloga; i++)
-        {
-            cout << "**************************************************\n";
-            cout << "Uloga " << "[" << i + 1 << "]" << endl;
-            cout << "---------------------------------------------\n";
-            _uloge[i]->Ispis();
-            cout << "---------------------------------------------\n";
-        }
-        cout << "Broj epizoda: " << _trenutnoEpizoda << endl;
-        for (size_t i = 0; i < _trenutnoEpizoda; i++)
+    return Datum(dan, mjesec, godina);
+    //ovdje se kreira kao kopija 
+}
 
-        {
-            cout << "**************************************************\n";
-            cout << "Epizoda " << "[" << i + 1 << "]" << endl;
-            cout << "---------------------------------------------\n";
-            _epizode[i].Ispis();
-            cout << "---------------------------------------------\n";
-        }
-    }
+//Z1.12 :: Provjeriti da li je 'd1' veci (noviji datum) od 'd2'
+bool operator > (const Datum& d1, const Datum& d2) {
+    return (* d1._godina*365 + *_d1._mjesec * 30 + *d1._dan);
+    (*d1._godina * 365 + *_d1._mjesec * 30 + *d1._dan) 
+        
+}
 
-    //Z5.7 
+bool operator >= (const Datum& d1, const Datum& d2);
 
-    ~Serija() {
-        delete[] _naziv;
-        _naziv = nullptr;
-        for (size_t i = 0; i < 50; i++) {
-            delete _uloge[i];
-            _uloge[i] = nullptr;
-        }
-        delete[] _epizode;
-        _epizode = nullptr;
-    }
+bool operator <(const Datum& d1, const Datum& d2);
+
+bool operator <=(const Datum& d1, const Datum& d2);
+
+//Z1.13 Izracunati razliku (u danima) izmedju objekata 'd1' i 'd2'
+int operator -(Datum& d1, Datum& d2);
+
+class Clan {
+    const int _clanId;
+    char _korisnickoIme[30];
+    char _lozinka[20];
+    Datum* _datumRegistracije;
+    bool* _spol;
+    static int _clanIdCounter;
+public:
+    //Z2.0 :: Vratiti vrijednost statickog atributa _clanIdCounter
+    static int GetCounter();
+
+    //Z2.1 :: Dflt. ctor  [Postaviti _clanId na vrijednost statickog brojaca. Zatim, uvecati brojac]
+    Clan();
+
+    //Z2.2 :: User-def. ctor [Postaviti _clanId na vrijednost statickog brojaca. Zatim, uvecati brojac]
+    Clan(const char* korisnickoIme, const char* lozinka, Datum datumReg, bool spol);
+
+    //Z2.3 :: Copy ctor [kopirati obj._clanId u _clanId]
+    Clan(const Clan& obj);
+
+    //Z2.4 :: Move ctor [kopirati obj._clanId u _clanId]
+    Clan(Clan&& obj);
+
+    //Z2.5 :: operator dodjele
+    Clan& operator = (const Clan& obj);
+
+    //Z2.6 :: Getteri
+    const char* GetKorisnickoIme() const;
+    const char* GetLozinka() const;
+    Datum GetDatumPrijave() const;
+    bool GetSpol() const;
+
+    //Z2.7 :: Setteri
+    void SetKorisnickoIme(const char* korisnickoIme);
+    void SetLozinka(const char* lozinka);
+    void SetDatumRegistracije(Datum datumRegistracije);
+    void SetSpol(bool spol);
+
+    //Z2.8 :: dtor
+    ~Clan();
 };
+int Clan::_clanIdCounter = 1; // Inicijalizacija statickog atributa
+
+//Z2.9 :: Ispisati podatke o clanu
+ostream& operator <<(ostream& COUT, const Clan& clan);
+
+//Z2.10 :: operator == [Porediti clanove 'c1' i 'c2' po korisnickom imenu]
+bool operator ==(const Clan& c1, const Clan& c2);
+
+class Post {
+    char* _postId;
+    char* _korisnickoIme; //_korisnickoIme clana foruma koji je objavio post
+    Datum _datumObjavljivanja;
+    char* _sadrzaj;
+    static int _postIdCounter;
+public:
+    //Z3.0 :: Vratiti staticki brojac _postIdCounter
+    static int GetCounter();
+
+    //Iskoristiti funkciju IntToStr za pretvaranje trenutne vrijednosti statickog atributa '_postIdCounter' u dinamicki niz karaktera
+    //Povecati vrijednost '_postIdCounter'
+    static char* GetNextPostId();
+
+    //Z3.1 :: Postaviti sve atribute na dflt. vrijednosti
+    Post();
+
+    //Z3.2 :: Za inicijalizaciju _postId iskoristiti staticku funkciju GetNextPostId
+    Post(const char* korisnickoIme, Datum datumO, const char* sadrzaj);
+
+    //Z3.3 :: Inicijalizirati '_postId' na osnovu 'obj._postId'
+    Post(const Post& obj);
+
+    //Z3.4 :: Move ctor
+    Post(Post&& obj);
+
+    //Z3.5 :: operator dodjele
+    Post& operator = (const Post& obj);
+
+    //Z3.6 :: Getteri
+    char* GetKorisnickoIme() const;
+    Datum GetDatumObjavljivanja() const;
+    char* GetSadrzaj() const;
+
+    //Z3.7 :: Setteri
+    //Settovati '_postId' pomocu staticke funkcije
+    void SetNewPostId();
+
+    void SetKorisnickoIme(const char* korisnickoIme);
+    void SetDatumObjavljivanja(Datum d);
+    void SetSadrzaj(const char* sadrzaj);
+
+    //Z3.8 :: dtor
+    ~Post();
+};
+int Post::_postIdCounter = 1000; // Inicijalizacija statickog atributa
+
+//Z3.9 :: Ispisati podatke o postu
+ostream& operator <<(ostream& COUT, const Post& p);
+const int maxBrojPostova = 100;
+class Sekcija {
+    char* _naziv;
+    char* _kratakOpis;
+    int _trenutnoPostova;
+    Post* _postovi[maxBrojPostova] = { nullptr };
+public:
+    //Z4.1 :: Dflt. ctor
+    Sekcija();
+
+    //Z4.2 :: User-def. ctor
+    Sekcija(const char* naziv, const char* kratakOpis);
+
+    //Z4.3 :: Copy ctor
+    Sekcija(const Sekcija& obj);
+
+    //Z4.4 :: Move ctor
+    Sekcija(Sekcija&& obj);
+
+    //Z4.5 :: operator dodjele
+    Sekcija& operator = (const Sekcija& obj);
+
+    //Z4.6 :: Getteri
+    char* GetNaziv() const;
+    char* GetKratakOpis() const;
+    Post GetPostAtI(int index) const;
+
+    //Z4.7 :: Setteri
+    void SetNaziv(const char* naziv);
+    void SetKratakOpis(const char* kratakOpis);
+
+    //Z4.8 :: operator +=  
+    //Dodati novi post u niz pokazivaca
+    //Onemoguciti dodavanje u slucaju da je popunjen niz pokazivaca
+    bool operator +=(Post& p);
+
+    //Z4.9 :: dtor
+    ~Sekcija();
+};
+//Z4.10 :: Ispisati podatke o sekciji [ukljucujuci i postove]
+ostream& operator << (ostream& COUT, const Sekcija& obj);
+
+const int maxBrojSekcija = 20;
+class Forum {
+    char* _naziv;
+    int _trenutnoSekcija;
+    Sekcija _sekcije[maxBrojSekcija];
+    int _maxClanova;
+    Clan* _clanovi;
+    int _trenutnoClanova;
+public:
+    //Z5.1 :: Dflt. ctor
+    Forum();
+
+    //Z5.2 :: User-def. ctor
+    Forum(const char* naziv, int maxClanova);
+
+    //Z5.3 :: Copy ctor
+    Forum(const Forum& obj);
+
+    //Z5.4 :: Move ctor
+    Forum(Forum&& obj);
+
+    //Z5.5 :: Getteri
+    int GetTrenutnoSekcija() const;
+    Sekcija GetSekcijaAtI(int index) const;
+    int GetBrojClanova() const;
+    int MaxBrojClanova() const;
+    Clan GetClanAtI(int index) const;
+
+    //Z5.6 :: Setteri
+    void SetNaziv(const char* naziv);
+
+    //Z5.7 :: Setter za _maxClanova
+    /*
+        Osigurati da je (noviMaxBrojClanova> _maxBrojClanova)
+        Kreirati novi niz velicine (noviMaxBrojClanova)
+        Kopirati sadrzaj iz starog niza u novi niz
+    */
+    void SetMaxClanova(int noviMaxBrojClanova);
+
+    //Z5.8 Operator += (dodavanje nove sekcije)
+    bool operator += (const Sekcija sekcija);
+
+    //Z5.9 :: operator += (dodavanje novog clana)
+    //Ukoliko brojac dosegne vrijednost '_maxClanova', uraditi prosirivanje niza za 10 koristenjem metode 'SetMaxClanova'
+    void operator += (const Clan clan);
+
+    //Z5.10 :: dtor
+    ~Forum();
+};
+//Z5.11 :: Ispisati podatke o forumu, ispisati sekcije [zajedno sa postovima] te korisnicka imena forumasa [clanova]
+ostream& operator <<(ostream& COUT, const Forum& f);
 
 void Zadatak1() {
-    cout << "Testiranje klase 'Datum'\n\n";
-    Datum novaGodina; //Def. ctor
-    novaGodina.SetDan(1);
-    novaGodina.SetMjesec(1);
-    novaGodina.SetGodina(2021);
-    novaGodina.Ispis();
+    int broj = 56511;
+    cout << "Pretvaranje broja (56511) u str] : " << endl;
+    char* stringBroj = IntToStr(broj);
+    cout << stringBroj << endl;
+    delete[] stringBroj;
+    stringBroj = nullptr;
+    cout << "Sve prijestupne godine izmedju [1900-2021]: " << endl;
+    for (size_t i = 1900; i <= 2021; i++)
+        if (PrijestupnaGodina(i))
+            cout << i << ", ";
     cout << endl;
-    //
-    Datum prviFebruar(novaGodina.GetDan(), novaGodina.GetMjesec() + 1, novaGodina.GetGodina());
-    prviFebruar.Ispis();
-    cout << endl;
+    Datum starWarsDay; //dflt. ctor
+    starWarsDay.SetDan(4);
+    starWarsDay.SetMjesec(5);
+    starWarsDay.SetGodina(2021);
+    cout << "Star Wars day: " << starWarsDay << endl; // operator <<
 
-    Datum prviMart(1, 3, 2021); //User-def. ctor
-    prviMart.Ispis();
-    cout << endl;
+    Datum worldUfoDay(starWarsDay.GetDan() - 3, starWarsDay.GetMjesec() + 2, starWarsDay.GetGodina()); //user-def. ctor
+    cout << "World Ufo day: " << worldUfoDay << endl;
 
-    Datum danSale(prviMart); //Copy ctor
-    danSale.SetMjesec(4);
-    danSale.Ispis();
-    cout << endl;
+    Datum laborDay(starWarsDay); //copy ctor
+    laborDay.SetDan(1);
+    cout << "Labor day (BiH): " << laborDay << endl;
 
-    Datum praznikRada(move(danSale)); //Move ctor
-    praznikRada.SetMjesec(5);
-    praznikRada.Ispis();
-    cout << endl;
+    Datum victoryDay(move(laborDay)); //Move ctor
+    victoryDay.SetDan(9);
+    cout << "Victory day (BiH): " << victoryDay << endl;
+
+    Datum juneSolstice(21, 6, 2021), juneSolstice_copy;
+    juneSolstice_copy = juneSolstice;
+    cout << "June Solstice (BiH): " << juneSolstice << endl;
     cout << "Dealokacija ..." << endl;
+
+    Datum datumi[] = { Datum(1,2,2021), Datum(31,12, 2020), Datum(31, 12, 2021) };
+    cout << "Razlika u danima: --->" << endl;
+    cout << "Razlika izmedju: " << datumi[0] << " i " << datumi[1] << " je " << datumi[0] - datumi[1] << endl; // operator -
+    cout << "Razlika izmedju: " << datumi[0] << " i " << datumi[2] << " je " << datumi[0] - datumi[2] << endl; // operator -
+    cout << "Razlika izmedju: " << datumi[1] << " i " << datumi[2] << " je " << datumi[1] - datumi[2] << endl; // operator -
+
+    //Testiranje operatora +
+    Datum someDatum(5, 5, 2025);
+    cout << "Test datum: " << someDatum << endl;
+    cout << someDatum << " + 30 dana  = " << someDatum + 30 << endl; // operator +
+    cout << "Dealokacija..." << endl;
 }
 
 void Zadatak2() {
-    cout << "Testiranje klase 'Glumac'\n\n";
-    Glumac ryanGosling; //Def. ctor
-    ryanGosling.SetIme("Ryan");
-    ryanGosling.SetPrezime("Gosling");
-    ryanGosling.SetSpol(1);
-    ryanGosling.SetDatumRodjenja(Datum(1, 1, 1980));
-    ryanGosling.SetZemljaPorijekla("Kanada");
-    ryanGosling.Ispis();
-    cout << endl;
-    //
-    Glumac harrisonFord("Harrison", "Ford", "SAD", 2, 2, 1955, 1); //User-def. ctor
-    Glumac michellePfeifer("Michelle", "Pfeiffer", "SAD", 3, 3, 1966, 0); //User-def. ctor
-    harrisonFord.Ispis();
-    cout << endl;
-    michellePfeifer.Ispis();
-    cout << endl;
 
-    Glumac jackNicholson(harrisonFord); // copy ctor
-    jackNicholson.SetIme("Jack");
-    jackNicholson.SetPrezime("Nicholson");
-    jackNicholson.SetDatumRodjenja(Datum(1, 4, 1945));
-    jackNicholson.Ispis();
-    cout << endl;
+    Clan almightyBruce;
+    almightyBruce.SetKorisnickoIme("almightyBruce");
+    almightyBruce.SetDatumRegistracije(Datum(1, 1, 2021));
+    almightyBruce.SetSpol(0);
+    almightyBruce.SetSpol(1);
+    almightyBruce.SetLozinka("its'Goooood");
+    cout << almightyBruce << endl;
 
-    Glumac heathLedger(move(jackNicholson)); //move ctor
-    heathLedger.SetIme("Heath");
-    heathLedger.SetPrezime("Ledger");
-    heathLedger.SetDatumRodjenja(Datum(5, 3, 1983));
-    heathLedger.SetZemljaPorijekla("Australija");
-    heathLedger.Ispis();
-    cout << endl;
-    cout << "Dealokacija ..." << endl;
+    Clan crazyMage("CrazyMage", "PA$$w0rd", Datum(3, 12, 2019), 1);
+    Clan copyCrazyMage(crazyMage);
+    cout << copyCrazyMage << endl;
+
+    Clan azermyth("Azermyth", "azerpass", Datum(1, 4, 2020), 1);
+    Clan noviAzer(move(azermyth));
+    cout << noviAzer << endl;
+    cout << "Testiranje operatora '==' " << endl;
+    cout << (crazyMage == copyCrazyMage ? "Isti clan!" : "Razlici clanovi!") << endl;
+
+    Clan aceVentura;
+    aceVentura = noviAzer;
+    aceVentura.SetKorisnickoIme("8Ventura");
+    cout << aceVentura << endl;
+    cout << "Dealokacija..." << endl;
 }
-
 void Zadatak3() {
-    cout << "Testiranje klase 'Epizoda'\n\n";
-    Epizoda e1;
-    e1.SetNaziv("What's Cooking?");
-    e1.SetTrajanje(21);
-    e1.SetKratakSadrzaj("Bender decides to become a chef so ...");
-    e1.SetDatumPremijere(Datum(5, 5, 2021));
-    e1.Ispis();
-    cout << endl;
+    Post p1;
+    p1.SetNewPostId();
+    p1.SetKorisnickoIme("Neo");
+    p1.SetDatumObjavljivanja(Datum(5, 5, 2021));
+    p1.SetSadrzaj("Izasao sam iz matrice. Osjecaj je prelijep...");
+    cout << p1 << endl;
 
-    Epizoda e2("This Mission is Trash", 22, "Fry, Leela, and Bender travel to the garbage meteor and discover loads of discarded junk.", Datum(13, 5, 2021), 10);
-    e2.Ispis();
-    cout << endl;
+    Post p2("Trinity", Datum(5, 5, 2021), " Kolega @Neo, you don't say.");
+    Post copyp2(p2);
+    cout << copyp2 << endl;
 
-    Epizoda e3(e2);
-    e3.SetNaziv("Smell-o-Scope");
-    e3.SetTrajanje(20);
-    e3.SetKratakSadrzaj("Using Professor Farnsworth's Smell-o-Scope, Fry locates the stinkiest object in the universe.");
-    e3.SetDatumPremijere(Datum(21, 5, 2021));
-    e3.Ispis();
-    cout << endl;
+    Post p3("Ementaler", Datum(6, 5, 2021), "Pozdrav ljudi. Ovdje Igor sa Hcl-a...");
+    Post pr3new(move(p3));
+    cout << pr3new << endl;
 
-    Epizoda e4(move(e3));
-    e4.SetNaziv("Electric Drug");
-    e4.SetTrajanje(24);
-    e4.SetKratakSadrzaj("Bender's electricity addiction puts the Planet Express crew in danger");
-    e4.SetDatumPremijere(Datum(29, 5, 2021));
-    for (size_t i = 0; i < 15; i++)
-        e4.DodajOcjenu(rand() % 10 + 1);
-    e4.UkloniZadnjuOcjenu();
-    e4.UkloniZadnjuOcjenu(); //Brisemo zadnje dvije ocjene
-    cout << endl;
-    e4.Ispis();
-    cout << "Dealokacija ..." << endl;
+    Post p4;
+    p4 = pr3new;
+    p4.SetNewPostId();
+    p4.SetKorisnickoIme("Agent Smith");
+    p4.SetSadrzaj("Dragi kolega @Neo, pripremite se da vas dealociram.");
+    cout << p4 << endl;
+    cout << "Dealokacija..." << endl;
 }
 
 void Zadatak4() {
-    cout << "Testiranje klase 'Uloga'\n\n";
-    Glumac seanConnery("Sean", "Connery", "Velika Britanija", 25, 8, 1930, 1);
-    Glumac danielCraig("Daniel", "Craig", "Velika Britanija", 2, 3, 1968, 1);
-    Uloga jamesBond(seanConnery, "MI6 Detective James Bond ....", "Main role");
-    jamesBond.SetGlumac(danielCraig);
-    jamesBond.SetOpis("After earning 00 status and a licence to kill, Secret Agent James Bond sets out on his first mission as 007.");
-    jamesBond.SetTipUloge("Main role");
+    Sekcija letNaMars("Let na mars, all about...", "Neki opis...");
+    Post p1("bad_karma13", Datum(2, 3, 2020), "Ispucao je losu srecu na Cybertrucku.. Ovo uspijeva 100%");
+    Post p2("monkey_see_monkey_do", Datum(3, 3, 2020), "Kad ono uzlijece Elon sa svojima? xD");
+    Post p3("cerealKillerHoho", Datum(3, 3, 2020), "Teraformiranje Marsa ce se pokazati kao prevelik zalogaj za nasu generaciju...");
+    Post p4("dr_Michio_Kaku", Datum(3, 3, 2020), "Ovo je prvi korak u kolonizaciji Suncevog sistema...");
+    letNaMars += p1;
+    letNaMars += p2;
+    letNaMars += p3;
+    Sekcija mars2(letNaMars);
+    mars2 += p4;
 
-    Uloga bond25(jamesBond);
-    Uloga bond26(move(bond25));
-    bond26.Ispis();
-    cout << "Dealokacija ..." << endl;
+    Sekcija mars3(move(mars2));
+    Post p5("superSonic", Datum(3, 3, 2020), "Zelimo novo gostovanje g.Muska kod Joe Rogena!");
+    mars3 += p5;
+    Sekcija mars4;
+    mars4 = mars3;
+    cout << mars4 << endl;
+    cout << "Dealokacija..." << endl;
 }
 
 void Zadatak5() {
-    cout << "Testiranje klase 'Serija'\n\n";
-    Serija teorijaVelikogPraska("The Big Bang Theory", 200);
+    Forum nebula("Nebula:: forum o fizici i metafizici", 10);
+    Clan arwen_dor("arwenix", "L0trI$L1fe", Datum(11, 1, 2021), 0);
+    Clan thomasAnderson("neo", "one", Datum(12, 1, 2021), 1);
+    Clan rickC_137("rickestRick", "wabalubadubdub", Datum(3, 3, 2021), 1);
 
-    Glumac jimParsons("Jim", "Parsons", "SAD", 17, 7, 1967, 1);
-    Glumac johnnyGalecki("Johnny", "Galecki", "SAD", 15, 3, 1975, 1);
-    Glumac kaleyCuoco("Kaley", "Cuoco", "SAD", 13, 4, 1985, 0);
-    Uloga sheldonCooper(jimParsons, "Dr. Sheldon Cooper, a theoretical physicist at Caltech", "Series regular");
-    Uloga leonardHofstadter(johnnyGalecki, "Dr. Leonard Hofstadter, a experimental physicist at Caltech", "Series regular");
-    Uloga penny(kaleyCuoco, "Penny, a waitress at Cheesecake factory", "Series regular");
-    //Serija::Dodavanje uloga
-    teorijaVelikogPraska.DodajUlogu(sheldonCooper);
-    teorijaVelikogPraska.DodajUlogu(leonardHofstadter);
-    teorijaVelikogPraska.DodajUlogu(penny);
-
-    Epizoda E1("The Big Bran Hypothesis", 22, "When Sheldon and Leonard drop off a box of flat pack furniture...", Datum(1, 6, 2021), 100);
-    Epizoda E2("The Luminous Fish Effect", 21, "Sheldon is fired from his job as a physicist after insulting his new boss...", Datum(8, 6, 2021), 100);
-    Epizoda E3("The Bat Jar Conjecture", 22, "The guys decide to compete in a university quiz called physics bowl...", Datum(15, 6, 2021), 100);
-    Epizoda E4("The Nerdvana Annihilation", 21, "In an online auction, Leonard buys a full-sized replica of the time machine...", Datum(22, 6, 2021), 100);
-
-    //Epizoda::DodajOcjenu
-    int ocjene1[] = { 5,7,8 }, ocjene2[] = { 10,5,7,10,9 }, ocjene3[] = { 9,8,9,9 }, ocjene4[] = { 10,5,3,7,6,6 };
-    for (size_t i = 0; i < size(ocjene1); i++)
-        E1.DodajOcjenu(ocjene1[i]);
-    for (size_t i = 0; i < size(ocjene2); i++)
-        E2.DodajOcjenu(ocjene2[i]);
-    for (size_t i = 0; i < size(ocjene3); i++)
-        E3.DodajOcjenu(ocjene3[i]);
-    for (size_t i = 0; i < size(ocjene4); i++)
-        E4.DodajOcjenu(ocjene4[i]);
-
-    //Serija::DodajEpizodu
-    teorijaVelikogPraska.DodajEpizodu(E1);
-    teorijaVelikogPraska.DodajEpizodu(E2);
-    teorijaVelikogPraska.DodajEpizodu(E3);
-    teorijaVelikogPraska.DodajEpizodu(E4);
-
-    Serija bigbangTheory1(teorijaVelikogPraska);
-    bigbangTheory1.Ispis();
-
-    Epizoda* ep = bigbangTheory1.GetNajboljeOcijenjenaEpizoda();
-    cout << "Najbolje ocijenjena epizoda: " << ep->GetNaziv() << endl;
-    cout << "Ocjena: " << ep->GetProsjecnaOcjena() << endl;
-    cout << "Dealokacija ..." << endl;
+    //Dodavanje clanova preko operatora +=
+    nebula += arwen_dor;
+    nebula += thomasAnderson;
+    nebula += rickC_137;
+    //
+    Sekcija newAge("New Age", "Sta predstavlja New Age?");
+    Post p1("arwenix", Datum(3, 3, 2020), "Postoji niz proturijecnih definicija o novom fenomenu ...");
+    Post p2("neo", Datum(4, 3, 2020), "Nova religija? Ili ipak samo nova paradigma? ...");
+    Post p3("rickestRick", Datum(5, 3, 2020), "Ovisi od konteksta u kojem se pojavljuje");
+    newAge += p1; // dodavanje posta
+    newAge += p2; // dodavanje posta
+    newAge += p3; // dodavanje posta
+    //
+    Sekcija telepatija("Telepatija i telekineza", "Parapsiholoski fenomeni");
+    Post p4("arwenix", Datum(6, 3, 2020), "Na ovom podrucju najvise se proslavio Uri Geller ...");
+    Post p5("neo", Datum(7, 3, 2020), "Medju poznatije slucajeve ubraja se i Nina Kulagina...");
+    telepatija += p4; // dodavanje posta
+    telepatija += p5; // dodavanje posta
+    //
+    nebula += newAge; // dodavanje sekcije
+    nebula += telepatija; // dodavanje sekcije
+    //
+    Forum copy_of_nebula(nebula);
+    Forum nebula_prime(move(copy_of_nebula));
+    cout << nebula_prime;
+    cout << "Dealokacija..." << endl;
 }
 
-void Menu() {
+int Menu() {
     int nastaviDalje = 1;
     while (nastaviDalje == 1) {
         int izbor = 0;
@@ -797,11 +591,11 @@ void Menu() {
             cin >> nastaviDalje;
         } while (nastaviDalje != 0 && nastaviDalje != 1);
     }
+    return 0;
 }
 
 int main() {
     Menu();
     return 0;
 }
-
 
