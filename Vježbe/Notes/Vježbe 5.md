@@ -52,9 +52,18 @@ novi=make_shared<int>()
 *novi=34;
 shared_pt<int> novi2=novi; // oni sada dijele istu adresu, odnosno dijele vlasništvo nad tom varijablom. 
 
-Svaki od ova dva ima u sebi ugrađen mehanizam prebrojavanja
+Svaki od ova dva ima u sebi ugrađen mehanizam prebrojavanja, tj. prikazuje koliko drugih pokazivča njih dijeli pristup. 
 
 
 
 
 
+
+
+Ukoliko zelimo da vidimo koliko ima referenci koristimo :
+**_dan.use_count();**
+
+**Vektor** je kolekcija elemenata i ona se može proširivati, u tom slučaju se elementi dodaju na kraj. To su obično kolekcije podataka koji su istog tipa. 
+**Vektori** su koristan koncept zbog mogućnosti paralenog izvršavanja. Vektori su osnova kompjuterske nauke 
+
+Staticka kolekcija nema mogućnost proširivanja za raliku od dinamičke. Služi da istu stvar, specifizira se odredjeni tip podatka i onda elemente koji su tog tipa pohranjujemo u niz elemenata, s tim da je niz fiksne dužine. 
