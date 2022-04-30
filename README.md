@@ -10,7 +10,7 @@ _Repozitorij za zadatke iz Programiranja II_
   <br>
   
   <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje-1.cpp">Predavanje 2 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%201%20-%20PRII.md">Teorija</a></p>
-    <p> <a href="https://github.com/saranur/Programiranje-II/tree/main/Predavanja/Predavanja%20-%20code/Predavanje%202%20-%20PRII">Predavanje 3 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%202%20-%20PRII.md">Teorija</a></p>
+    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%202%20-%20PRII/Predavanje%202%20-%20PRII/Source.cpp">Predavanje 3 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%202%20-%20PRII.md">Teorija</a></p>
     <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje-3.cpp">Predavanje 4 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%203%20-%20PRII.md">Teorija</a></p>
     <p> <a href="">Predavanje 5 & 6 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%204%20-%20PRII.md">Teorija</a></p>
     <p> <a href="">Predavanje 7 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%205%20-%20PRII.md">Teorija</a></p>
