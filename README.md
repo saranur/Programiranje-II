@@ -40,7 +40,7 @@ _Repozitorij za zadatke iz Programiranja II_
 <p> Koncept višenasljednosti u klasama: <a href=""> Postavka </a>  <a href=""> Rješenje </a> </p>
 <p> Vježbe 8 Interfejs i višenasljednost: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/V8_Postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a></p>
 <p> Vježba 9 Exceptions (Greške): <a href="https://github.com/saranur/Programiranje-II/blob/main/Vje%C5%BEbe/Postavke/V9_Postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p>
-<p> Vježba 10 STL: <a href="https://github.com/saranur/Programiranje-II/blob/2e3327e54fae13a380c3d72f3b583a8e4474f568/Vje%C5%BEbe/Postavke/V10_Postavka.docx?raw=true"> Postavka </a>  <a href=""> Rješenje </a> </p>
+<p> Vježba 10 STL: <a href="https://github.com/saranur/Programiranje-II/raw/main/Vje%C5%BEbe/Postavke/V10_Postavka.docx"> Postavka </a>  <a href=""> Rješenje </a> </p>
 </details>
 <hr>
 <details>
