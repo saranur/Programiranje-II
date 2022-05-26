@@ -1,0 +1,91 @@
+### ALGORITAM SORTIRANJE - BUBBLE SORT 
+
+<hr> 
+
+Bubble sort je najjednostavniji u pogledu implementacije, mada nije najjefikasniji algoritam. 
+
+```c++
+void BubbleSort(T niz[], int vel, bool reverse = false)
+{
+    //Lambda fija koja odreduje nacin sortiranja:
+    //Auto smo pokazivac koristili jer nam entry lista [] nije prazna;
+    auto sort = [&reverse](T& el1, T& el2)//Uzimamo objekte po referenci kako bi se izbjeglo kopiranje a i da imamo kontrolu nad njihovim vrijednostima direktno;
+    {
+        if (reverse == true)//Ako je u "rikvercu"
+            return el1 < el2;//sortiraj niz opadajucim redosljedom,
+        return el1 > el2;//Ako nije onda ga sortiraj penjucim redosljedom;
+    };
+    for (int i = 0; i < vel - 1; i++)//Vel-1 jer je dovoljno da se ide za jedan manje od max velicine, nepotrebno je ici dalje;
+    {
+        for (int j = 0; j < vel - i - 1; j++)//Idemo do vel-i-1 jer je vazda zadnji el niza sortiran, ovime se optimizira sami sort;
+        {
+            if (sort(niz[j], niz[j + 1]))
+            {
+                T temp = niz[j];//Copy ctor za class T;
+                niz[j] = niz[j + 1];//Mora postojati preklopljen operator dodjele za class T;
+                niz[j + 1] = temp;
+            }
+        }
+    }
+}
+```
+
+<hr>
+
+### Move ctor i move assignement operator
+
+<hr>
+
+npr. 
+
+```c++
+Student kemson, sonofanarchy;
+//kada se move nadje unutar same deklaracije onda se poziva move ctor
+kemson = sonofanarchy; // 
+kemson = move(sonofanarchy); //kada se move poziva za vec postojece objekte onda se radi o move assignment operatoru
+
+/* Move assigment operator npr:
+Student& operator = (Student&& obj){
+return *this;
+} */
+```
+
+<hr>
+
+### Unique pointeri
+
+<hr>
+
+**unique_ptr<>** je pointer koji **JEDINI** pokazuje na odredjenu lokaciju. Kada se kreira, imacemo **make_unique**.
+
+```c++
+unique_ptr<int>u1 = make_unique<int>(3);
+unique_ptr<int>u2;
+u2=u1; //ovo je nemoguce jer bi sada u2 i u1 pokazivali na istu lokaciju, sto kod unique_ptr nije moguce!
+//Zato se koristi 
+u2=move(u1); //prebacili smo adresu iz u1 na u2, ovo je jedini nacin na koji se mogu prebacivati vrijednosti izmedju unique pointera
+//Mogu se iskljucivo prebacivati, ne mogu se kopirati!!
+u1.reset(); //postavljamo na nullptr 
+//Unique pointeri imaju i funkciju release 
+u1.release; //otpusta objekat u vidu klasicnog pokazivaca, smart pointer bi se trebao resetovat i njegova adresa ce biti otpustena pa se on moze pohraniti u klasicni pointer 
+int *pok=u1.release;
+u2.reset();
+
+```
+
+<hr>
+
+### pair
+
+<hr>
+
+pair je takodjer genericka klasa koja prima dva parametra (ta dva parametra su tipovi podataka int, int)
+
+
+
+
+
+
+
+
+
