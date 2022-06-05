@@ -1,59 +1,49 @@
-### Konstante i reference
 
-<hr>
+Broj konstruktora ovisi o tome na koliko načina želimo da programeru omogućimo kreiranje objekata. **Destruktor** može postojati samo jedan.
 
-Prilikom deklaracije varijable možemo, a i ne moramo dodijeli neku vrijednost, dok kod konstanti to nije slučaj. **Konstantama** se vrijednost mora dodijeliti neporedno prilikom inicijalizacije. 
-**const int k=10;**
+**tm struktura** - u sebi ima set obilježja koje čuvaju vrijednosti o datumu i vremenu
 
-Referenca zahtjeva da joj se odmah dodjeli vrijednost, ali se vrijednost može naknadno mijenjati za razliku od kontsanti.
+**time_t** - vrati trenutno vrijeme time(0), vraća vrijeme u sekundama koje su prošle od 00:00 u donosu na Jan 1, 1970 godine, (UTC).
 
-**int a=55;**
-**int &ref=a;** // ovdje ce ref biti drugo ime za varijablu a, sve promjene na **ref** će se reflektovati na varijablu a. i sve promjene na **a** će se reflektovati na ref
+**localtime_s() metoda** - možemo korisititi za konvertovanje sekundi koje dobijemo u time_t koje će nam reći trenutni datum.
 
-**Referenca** je drugo ime za neku već postojeću memorijsku lokaciju. 
+**strcpy** - je nesigurna funkcija. Kada pokušate kopirati string koristeći strcpy () u bafer koji nije dovoljno velik da ga sadrži, to će uzrokovati prelijevanje bafera.
 
-Drugi način inicijalizacije je:
-**int a(10);**
+**strcpy_s** - je sigurnosna verzija strcpy(). Pomoću strcpy_s možete odrediti veličinu odredišnog bafera kako biste izbjegli prelijevanje međuspremnika tokom kopiranja.
 
-Da reference ne bi usmjeravali na lokacije koje imaju kratak vijek trajanja, možemo našu referencu usmjeriti na globalnu varijablu.
+**itoa_s** - Pretvara cjelobrojnu vrijednost u string sa nultom završetkom (sa null-terminirajućem znakom na kraju - on naznačava kraj stringa) koristeći navedenu bazu i pohranjuje rezultat u niz dat parametrom str. Ona zahtjeva value, zatim buffer i zatim bazu 
 
-<hr>
+**itoa_s - Integer to aplhabet** - konvertuje broj u niz karaktera  
 
-### Zaglavlje konstruktora 
+**strcat_s** funckija dodaje strSource strDestination i završava rezultujući string sa null-terminiraju'im karakterom. Početni znak strSource prepisuje završni null karakter strDestination. Ponašanje strcat_s je nedefinirano ako se izvorni i odredišni nizovi preklapaju.
 
-<hr>
+**strcpy uvijek zanemaruje postojeći sadržaj niza i kreće od nule.**
 
-Najčešća tri momenta zbog kojih imamo potrebu da reagujemo u zaglavlju konstruktora su kada imamo: 
+**strcat zadržava postojeći sadržaj ali na taj sadržaj dodaje neke vrijednosti.** 
 
-- Konstante
-- Reference 
-- Objekti drugih klasa
+npr:
 
-<hr>
+```
+char* ToString() {
+		int max = 20;
+		char* temp = new char[max]; 
+		char buffer[10];
+		_itoa_s(_dan, buffer, 10); //da bi dobili broj kao niz karaktera koristimo metodu itoa_s(), pohraniće ga   buffer po bazi 10
+		//ako je početna vrijednost bila 16 ako dodamo 2 dana, sada će taj buffer imati vrijednost 18
+		radimo itoa_s kako bi ga mogli uklapati sa nekim znakovima, s ovom funkcijom ne možemo koristiti matematičke funkcije ali nam to ovdje nije ni potrebno.
+		strcpy_s(temp, max, buffer); //16 //bez dodavanja dana
+		strcat_s(temp, max, "."); //16.
+		_itoa_s(_mjesec, buffer, 10);  //itoa-integer to alphabet 
+		//strcpy_s prekopira niz karaktera koji se proslijedi u novi, strcpy uvijek ignorise postojeci sadrzaj
+		//krece od lokacije nula i zanemaruje postojeci sadrzaj niza
+		strcat_s(temp, max, buffer); //16.3
+		strcat_s(temp, max, "."); 
+		//strcat_s - zadrzava postojeci sadrzaj niza ali na njega dodaje tacku u ovom slucaju
+		//strcat_s 
+		_itoa_s(_godina, buffer, 10);
+		strcat_s(temp, max, buffer); //13.3.2021
+		return temp;
+```
 
-### Konstruktor kopije
-
-<hr>
-
-Vlastiti **konstruktor kopije** imamo razloga implementirati kada imamo neke pokazivače u našoj klasi jer želimo da izbjegnemo kopiranje adresa pokazivača i time izbjegnemo padanje programa. 
-
-Parametar u konstruktoru kopije **MORA BITI PO REFERENCI**. Kada bi konstruktor kopije primao vrijednosti po vrijednost, a ne po referenci, konstruktor kopije bi zahtjevao kopiju. Da ne bi imali beskonačnu petlju, u konstruktoru kopije parametar mora biti po referenci. 
-
-<hr>
-
-### Konstruktor move 
-
-<hr>
-
-On se od konstruktora kopije razlikuje po tome što kod svog parametra ima dva znaka ampersand (&&). U move konstruktoru, mi preuzimamo adresu i kažemo originalu da je zaboravi. 
-
-<hr>
-
-### Statički članovi
-
- <hr>
-
-
-
-
+**Za pozivanje željenih konstrukora neke klase unutar neke druge klase, u zaglavlju te druge klase možemo napisati znak : i možemo naglasiti koji konstrukor želimo da pozovemo.** 
 
