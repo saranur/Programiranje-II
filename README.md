@@ -8,12 +8,20 @@ _Repozitorij za zadatke iz Programiranja II_
 <details>
   <summary>Predavanja</summary>
   <br>
+ 
   
-  <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje-1.cpp">Predavanje 1 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%201%20-%20PRII.md">Teorija</a></p>
-    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%202.cpp">Predavanje 2 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%202%20-%20PRII.md">Teorija</a></p>
-    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje-3.cpp">Predavanje 3 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%203%20-%20PRII.md">Teorija</a></p>
-    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%204%2C%205%20%26%206.cpp">Predavanje 4, 5 & 6 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%204%2C%205%2C%20%26%206%20-%20PRII.md">Teorija</a></p>
-    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Probni%20ispit%20-%20Music.cpp">Predavanje 7 - Probni parcijalni - PRII</a> - <a href="https://github.com/saranur/Programiranje-II/raw/main/Predavanja/Predavanja%20-%20code/Music%20probni%20.docx">Postavka</a></p> 
+  <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%202.cpp">Predavanje 2 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%202%20-%20PRII.md">Teorija</a></p>
+    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%203.cpp">Predavanje 3 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%203%20-%20PRII.md">Teorija</a></p>
+    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%204.cpp">Predavanje 4 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%204%20-%20PRII.md">Teorija</a></p>
+    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%205%2C%206%20%26%207.cpp">Predavanje 5, 6 & 7 - PRII</a>  -  <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%205%2C%206%2C%20%26%207%20-%20PRII.md">Teorija</a></p>
+    <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Probni%20ispit%20-%20Music.cpp">Predavanje 8 - Probni parcijalni - PRII</a> - <a href="https://github.com/saranur/Programiranje-II/raw/main/Predavanja/Predavanja%20-%20code/Music%20probni%20.docx">Postavka</a></p>
+  <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%209.cpp">Predavanje 9 </a> - <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%209%20-%20PRII.md">Teorija</a></p>
+  <p> <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Predavanja%20-%20code/Predavanje%2010.cpp">Predavanje 10 </a> - <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%2010%20-%20PRII.md">Teorija</a></p>
+  <p> <a href="">Predavanje 11 </a> - <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%2011%20-%20PRII.md">Teorija</a></p>
+  <p> <a href="">Predavanje 12 </a> - <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%2012%20-%20PRII.md">Teorija</a></p>
+  <p> <a href="">Predavanje 13 </a> - <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%2013%20-%20PRII.md">Teorija</a></p>
+  <p> <a href="">Predavanje 14 </a> - <a href="https://github.com/saranur/Programiranje-II/blob/main/Predavanja/Teorija/Predavanje%2014%20-%20PRII.md">Teorija</a></p>
+  
    
  
   </details>
