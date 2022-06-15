@@ -63,7 +63,9 @@ Cast operatori nam omogucavaju da izvrsimo konverziju iz jednog tipa u drugi. Ug
 
 dynamic_cast<DLStudent*>(fit[i]);
 
-//ako dynamic_cast ako ne pokazuje na objekat koji mi zahtjevamo, on nce nama vratiti NULL
+//ako dynamic_cast ako ne pokazuje na objekat koji mi zahtjevamo, on ce nama vratiti NULL. dynamic_cast
+
+static_cast – Koristi se za konverziju normalnog/običnog tipa. Ovo je također uloga odgovorna za implicitnu koerziju tipa i također se može eksplicitno pozvati. Trebali biste ga koristiti u slučajevima kao što je pretvaranje float u int, char u int, itd. dynamic_cast −Ovo prevođenje se koristi za rukovanje polimorfizmom. Za rad na dynamic_cast mora postojati jedna virtualna funkcija u osnovnoj klasi.
 
 **static_cast** je logika odozgo prema dole, gdje npr mozemo castati iz Studenta u DL Studenta. 
 **dynamic_cast** 
