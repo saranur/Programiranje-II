@@ -61,10 +61,6 @@ _Repozitorij za zadatke iz Programiranja II_
  <p>Ispitni 31.08.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2031.08.2020.%20postavka.docx?raw=true"> Postavka</a>  <a href=""> Rješenje</a></p>
  <p>Ispitni 15.07.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2015.07.2020.%20postavka.docx?raw=true"> Postavka</a>  <a href=""> Rješenje </a></p>
  <p>Ispitni 24.06.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2024.06.2020.%20postavka.docx?raw=true"> Postavka</a>  <a href=""> Rješenje </a></p>
- <p>Ispitni 28.08.2019 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2028.08.2019.%20postavka.docx?raw=true"> Postavka</a>  <a href=""> Rješenje </a></p>
- <p>Ispitni 04.07.2019 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2004.07.2019.%20postavka.docx?raw=true"> Postavka</a>  <a href=""> Rješenje </a></p>
- <p>Ispitni 20.06.2019 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2020.06.2019.%20postavka.docx?raw=true"> Postavka</a>  <a href=""> Rješenje </a></p>
- <p>Ispitni 24.01.2019 <a href="https://github.com/saranur/Programiranje-II/raw/main/Ispitni%20zadaci/Postavke/Ispitni%2024.1.2019%20postavka.pdf"> Postavka </a>  <a href=""> Rješenje </a></p>
 
 </details>
 <hr>
