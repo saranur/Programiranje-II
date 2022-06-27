@@ -61,6 +61,7 @@ _Repozitorij za zadatke iz Programiranja II_
  <p>Ispitni 31.08.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2031.08.2020.%20postavka.docx?raw=true"> Postavka</a> ~ <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Postavke%20cpp/Ispitni%2031.08.2020%20Postavka.cpp"> Postavka cpp</a> ~   <a href=""> Rješenje</a></p>
  <p>Ispitni 15.07.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2015.07.2020.%20postavka.docx?raw=true"> Postavka</a> ~ <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Postavke%20cpp/Ispitni%2015.07.2020%20Postavka.cpp"> Postavka cpp</a> ~   <a href=""> Rješenje </a></p>
  <p>Ispitni 24.06.2020 <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Ispitni%2024.06.2020.%20postavka.docx?raw=true"> Postavka</a> ~ <a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Postavke/Postavke%20cpp/Ispitni%2024.06.2020%20Postavka.cpp"> Postavka cpp</a> ~   <a href=""> Rješenje </a></p>
+ <p><a href="https://github.com/saranur/Programiranje-II/blob/main/Ispitni%20zadaci/Teoretska%20pitanja.md">Teoretska pitanja - odgovori </a></>
 
 </details>
 <hr>
