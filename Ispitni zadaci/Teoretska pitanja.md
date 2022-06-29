@@ -2,7 +2,7 @@
 
 <hr>
 
-1. **Pojasnite ulogu operatora const_cast?**
+1. **Pojasnite ulogu operatora const_cast?** Const cast operator se  koristi kada zelimo da  uklonimo const obiljezje sa nekog objekta, time pruzajuci  mogucnost izmjene vrijednosti tog objekta/primitivnog tipa.
 2. **Ukratko opisite redoslijed kreiranja objekta bazne klase u slucaju visestrukog nasljedjivanja(prilikom instanciranja objekta najizvedenije klase), te koja su moguca rjesenja najznacajnijih problema u tom kontekstu ?**
 
 <hr>
