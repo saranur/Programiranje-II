@@ -14,7 +14,7 @@
 1. **Pojasnite ulogu i nacin koristenja generickog tipa future<>?**
    `future<>` je objekt koji može dohvatiti vrijednost iz nekog objekta ili funkcije, pravilno sinkronizirajući taj pristup ako je u različitim nitima. Najčešće se koristi kada imamo kompleksne kalkulacije ili neku komunikaciju sa serverom koja će potrajati, a trebat će     nam za kasnije i da je ne bismo čekali pohraniti ćemo je u future objekat i na taj način uzeti rezultat tek kada nam zatreba, a nećmo glavni proces držati na čekanju
 2. **Ukratko opisite na koji nacin se moze izbjeci pojavljivanje vise podobjekata bazne klase u slucaju visestrukog nasljedjivanja ?** 
-
+Ovakav problem mozemo izbjeci na nacin da pri samom nasljedjivanju koristimo kljucnu rijec "virtual" ili da neku od metoda bazne klase takodjer proglasimo virtualnom.
 <hr>
 
 ### Ispit 25.06.2021 G1
